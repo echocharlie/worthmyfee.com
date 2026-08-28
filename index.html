@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worth My Fee — Is your card worth its annual fee?</title>
+<meta name="description" content="Connect your cards, and Worth My Fee audits every advertised credit: which ones you can actually reach, which are traps, and whether each card earns its fee.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..600&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --paper: #F7F5F0;
+    --paper-raised: #FFFFFF;
+    --ink: #20231F;
+    --ink-soft: #4A4D45;
+    --muted: #75786F;
+    --rule: #D9D5CA;
+    --rule-strong: #B9B5A8;
+    --green: #25604A;
+    --green-deep: #1B4A38;
+    --green-soft: #E3EBE5;
+    --rust: #A63D2A;
+    --rust-soft: #F2E4DF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem; line-height: 1.65;
+  }
+  .wrap { max-width: 68rem; margin: 0 auto; padding: 0 1.5rem; }
+  a { color: var(--green); }
+
+  /* nav */
+  nav { border-bottom: 1px solid var(--rule); background: var(--paper); }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 0; }
+  .wordmark { font-family: "Newsreader", Georgia, serif; font-weight: 700; font-size: 1.25rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .wordmark .q { color: var(--green); }
+  .nav-links { display: flex; gap: 1.5rem; font-size: 0.9rem; }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; }
+  .nav-links a:hover { color: var(--green); }
+
+  /* hero */
+  .hero { padding: 5rem 0 3.5rem; border-bottom: 1px solid var(--rule); }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3.5rem; align-items: center; }
+  @media (max-width: 820px) { .hero-grid { grid-template-columns: 1fr; } }
+  .kicker {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--green); margin-bottom: 1.2rem;
+  }
+  h1 {
+    font-family: "Newsreader", Georgia, serif; font-weight: 500;
+    font-size: clamp(2.5rem, 5.5vw, 3.6rem); line-height: 1.06; letter-spacing: -0.015em;
+    margin: 0 0 1.2rem; text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--green); }
+  .hero p.lede { font-size: 1.15rem; color: var(--ink-soft); max-width: 30rem; margin: 0 0 2rem; }
+  .cta-row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; background: var(--green); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 0.95rem; padding: 0.85rem 1.6rem; border-radius: 4px;
+  }
+  .btn:hover { background: var(--green-deep); }
+  .cta-note { font-size: 0.82rem; color: var(--muted); }
+
+  /* hero receipt */
+  .receipt {
+    background: var(--paper-raised); border: 1px solid var(--rule);
+    box-shadow: 0 1px 2px rgba(32,35,31,0.06), 0 8px 28px rgba(32,35,31,0.07);
+    padding: 1.6rem 1.7rem; font-variant-numeric: tabular-nums;
+  }
+  .receipt h3 {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+    margin: 0 0 1rem; border-bottom: 3px double var(--rule-strong); padding-bottom: 0.7rem;
+  }
+  .r-line { display: flex; justify-content: space-between; gap: 1rem; padding: 0.4rem 0; font-size: 0.9rem; border-bottom: 1px dotted var(--rule); }
+  .r-line .amt { font-family: "IBM Plex Mono", monospace; font-size: 0.85rem; white-space: nowrap; }
+  .r-line .amt.zero { color: var(--rust); }
+  .r-line .amt.ok { color: var(--green); }
+  .r-line .lbl span { display: block; font-size: 0.72rem; color: var(--muted); }
+  .r-total { display: flex; justify-content: space-between; padding-top: 0.8rem; margin-top: 0.4rem; border-top: 2px solid var(--rule-strong); font-weight: 700; }
+  .r-total .amt { font-family: "IBM Plex Mono", monospace; }
+  .r-foot { font-size: 0.72rem; color: var(--muted); margin-top: 0.9rem; }
+
+  /* sections */
+  section { padding: 4rem 0; border-bottom: 1px solid var(--rule); }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem;
+  }
+  h2 {
+    font-family: "Newsreader", Georgia, serif; font-weight: 600;
+    font-size: clamp(1.7rem, 3.5vw, 2.2rem); line-height: 1.15; margin: 0 0 1rem; text-wrap: balance;
+  }
+  section > .wrap > p, .prose p { max-width: 40rem; color: var(--ink-soft); }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2rem; }
+  @media (max-width: 720px) { .steps { grid-template-columns: 1fr; } }
+  .step { background: var(--paper-raised); border: 1px solid var(--rule); padding: 1.4rem 1.5rem; }
+  .step .n { font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; font-weight: 600; color: var(--green); }
+  .step h3 { font-family: "Newsreader", Georgia, serif; font-size: 1.2rem; font-weight: 600; margin: 0.4rem 0 0.5rem; }
+  .step p { font-size: 0.92rem; color: var(--ink-soft); margin: 0; }
+
+  .trap { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; margin-top: 1rem; }
+  @media (max-width: 820px) { .trap { grid-template-columns: 1fr; } }
+  .trap-card { border-left: 3px solid var(--rust); background: var(--rust-soft); padding: 1.2rem 1.4rem; font-size: 0.95rem; }
+  .trap-card strong { color: var(--rust); }
+
+  .assure { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2rem; }
+  @media (max-width: 720px) { .assure { grid-template-columns: 1fr; } }
+  .assure div { border-top: 2px solid var(--green); padding-top: 0.9rem; }
+  .assure h3 { font-size: 1rem; font-weight: 600; margin: 0 0 0.4rem; font-family: "Libre Franklin", sans-serif; }
+  .assure p { font-size: 0.88rem; color: var(--ink-soft); margin: 0; }
+
+  .final { text-align: center; padding: 5rem 0; border-bottom: none; }
+  .final h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+  .final p { margin: 0 auto 2rem; }
+
+  footer { border-top: 3px double var(--rule-strong); background: var(--paper); padding: 2.5rem 0 3rem; }
+  .foot-grid { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; font-size: 0.85rem; color: var(--muted); }
+  .foot-grid a { color: var(--ink-soft); }
+  .disclaimer { font-size: 0.75rem; color: var(--muted); max-width: 44rem; margin-top: 1.5rem; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="wordmark" href="/">Worth&nbsp;My&nbsp;Fee<span class="q">?</span></a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#security">Security</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">The audit for premium credit cards</div>
+      <h1>Your card advertises $2,000 in credits. How much can <em>you</em> actually reach?</h1>
+      <p class="lede">Worth My Fee connects to your cards, reads a year of real spending, and audits every advertised credit against how you actually live — then tells you, card by card: worth the fee, or not.</p>
+      <div class="cta-row">
+        <a class="btn" href="mailto:hello@worthmyfee.com?subject=Early%20access">Get early access</a>
+        <span class="cta-note">Launching soon. One-time audit — not another subscription.</span>
+      </div>
+    </div>
+    <div class="receipt" aria-label="Sample audit result">
+      <h3>Sample audit · one real six-card portfolio</h3>
+      <div class="r-line"><span class="lbl">Hotel portal credit<span>voids your elite status when used</span></span><span class="amt zero">$500 → $0</span></div>
+      <div class="r-line"><span class="lbl">Ticket + fitness credits<span>zero matching spend in 12 months</span></span><span class="amt zero">$420 → $0</span></div>
+      <div class="r-line"><span class="lbl">Delivery credit<span>monthly reset, 5 orders all year</span></span><span class="amt">$300 → $60</span></div>
+      <div class="r-line"><span class="lbl">Rideshare credits<span>you already ride every month</span></span><span class="amt ok">$320 → $320</span></div>
+      <div class="r-total"><span>Advertised vs. yours</span><span class="amt">$1,940 → $380</span></div>
+      <p class="r-foot">19.6¢ reachable per advertised dollar. The annual fees on this portfolio: $3,359.</p>
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>Three steps. One verdict per card.</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="n">01</span>
+        <h3>Connect your cards</h3>
+        <p>Link your cards securely through Plaid — the same connection service your bank already works with. We read transactions only. We never see your bank password.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <h3>Tell us what you're loyal to</h3>
+        <p>Hotel status, airline status, elite nights in progress. This is what other tools skip — and it's where the expensive traps hide.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <h3>Get your audit</h3>
+        <p>Every credit scored against your real behavior: claim it, ignore it, or it's a trap. Then the bottom line per card — keep it, downgrade it, or cancel before the fee posts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The part nobody else does</div>
+    <h2>Some credits cost more than they give.</h2>
+    <div class="trap">
+      <div class="prose">
+        <p>Every card app can remind you to use a credit. None of them ask whether you <em>should</em>.</p>
+        <p>The classic: a $500 hotel credit that only works through the card's own travel portal. Book through the portal, and the hotel treats it as a third-party prepaid stay — your elite status isn't honored, your night doesn't count toward requalification, your points don't post. The credit pays you $500 and quietly takes back more.</p>
+        <p>Worth My Fee models your loyalty programs alongside your card benefits, so every verdict is net of what a redemption would cost you elsewhere.</p>
+      </div>
+      <div class="trap-card">
+        <strong>Trap detected:</strong> Using your card's $500 portal hotel credit would void elite-status recognition on the stays you booked with it — estimated to cost you more in lost upgrades, points, and qualifying nights than the credit returns. <br><br><strong>Verdict:</strong> skip this credit; it's part of why this card fails its fee test.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="security">
+  <div class="wrap">
+    <div class="eyebrow">Security</div>
+    <h2>Built like it handles your money — because it reads it.</h2>
+    <div class="assure">
+      <div>
+        <h3>Bank credentials never touch us</h3>
+        <p>Connections run through Plaid using your bank's own sign-in (OAuth). We receive read-only transaction data, nothing more.</p>
+      </div>
+      <div>
+        <h3>Encrypted at rest</h3>
+        <p>Connection tokens are encrypted with AES-256 before storage and are never exposed to your browser or anyone else's.</p>
+      </div>
+      <div>
+        <h3>Delete means delete</h3>
+        <p>Disconnect your cards or delete your account at any time — we revoke bank connections and remove your data. Details in our <a href="privacy.html">privacy policy</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>WMF, bro?</h2>
+    <p>Run the audit once. Know what every card is actually worth — before the next annual fee posts.</p>
+    <a class="btn" href="mailto:hello@worthmyfee.com?subject=Early%20access">Get early access</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <span>© 2026 Worth My Fee</span>
+      <span><a href="privacy.html">Privacy Policy</a> · <a href="mailto:hello@worthmyfee.com">hello@worthmyfee.com</a></span>
+    </div>
+    <p class="disclaimer">Worth My Fee is an independent product and is not affiliated with, endorsed by, or sponsored by any card issuer, bank, or loyalty program. Card names and program names are the trademarks of their respective owners and are referenced for identification only. Worth My Fee provides informational analysis of card benefits and does not provide financial, investment, or legal advice.</p>
+  </div>
+</footer>
+
+</body>
+</html>

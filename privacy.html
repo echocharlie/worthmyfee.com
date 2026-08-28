@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Worth My Fee</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..800&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #F7F5F0; --paper-raised: #FFFFFF; --ink: #20231F; --ink-soft: #4A4D45;
+    --muted: #75786F; --rule: #D9D5CA; --rule-strong: #B9B5A8; --green: #25604A;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Libre Franklin", "Helvetica Neue", Arial, sans-serif; line-height: 1.7; }
+  nav { border-bottom: 1px solid var(--rule); }
+  .nav-inner { max-width: 68rem; margin: 0 auto; padding: 1.1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+  .wordmark { font-family: "Newsreader", Georgia, serif; font-weight: 700; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
+  .wordmark .q { color: var(--green); }
+  .nav-inner a.back { font-size: 0.9rem; color: var(--ink-soft); text-decoration: none; }
+  main { max-width: 44rem; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
+  .updated { font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  h1 { font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: 2.4rem; line-height: 1.1; margin: 0 0 2rem; }
+  h2 { font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: 1.4rem; margin: 2.5rem 0 0.6rem; border-top: 1px solid var(--rule); padding-top: 1.5rem; }
+  p, li { color: var(--ink-soft); font-size: 0.97rem; }
+  ul { padding-left: 1.3rem; }
+  li { margin-bottom: 0.4rem; }
+  a { color: var(--green); }
+  strong { color: var(--ink); }
+  footer { border-top: 3px double var(--rule-strong); padding: 2rem 1.5rem 3rem; }
+  .foot-inner { max-width: 68rem; margin: 0 auto; font-size: 0.85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="wordmark" href="index.html">Worth&nbsp;My&nbsp;Fee<span class="q">?</span></a>
+    <a class="back" href="index.html">← Back</a>
+  </div>
+</nav>
+
+<main>
+  <div class="updated">Effective date: August 28, 2026</div>
+  <h1>Privacy Policy</h1>
+
+  <p>This policy describes how Worth My Fee ("we," "us") collects, uses, stores, and deletes your information when you use our website and application (the "Service"). The short version: we collect the minimum needed to audit your card benefits, we never see or store your bank credentials, we don't sell your data, and you can delete everything at any time.</p>
+
+  <h2>1. Information we collect</h2>
+  <ul>
+    <li><strong>Account information.</strong> When you sign in with Google, we receive your email address and a unique account identifier. We use this to create and secure your account.</li>
+    <li><strong>Financial account data via Plaid.</strong> When you choose to connect a credit card, we use Plaid Inc. ("Plaid") to retrieve read-only data about that account: account name and type, and transaction history (dates, amounts, merchant names, and categories). We use this solely to analyze which card benefits your spending can reach. <strong>We never receive, see, or store your banking username or password</strong> — you authenticate directly with your bank through Plaid, typically via your bank's own sign-in page.</li>
+    <li><strong>Information you provide.</strong> Cards you add, annual fees and renewal dates, benefits you track, redemptions you log, and loyalty-program details you choose to share (for example, hotel or airline status levels). This information powers the benefit and conflict analysis you ask us to perform.</li>
+    <li><strong>Technical information.</strong> Standard server logs (IP address, browser type, timestamps) used for security and reliability. We do not use advertising trackers.</li>
+  </ul>
+
+  <h2>2. How we use your information</h2>
+  <ul>
+    <li>To operate the Service: matching your transactions against card benefits, scoring reachability, detecting conflicts with your loyalty programs, and generating your audit results.</li>
+    <li>To secure the Service: authentication, fraud prevention, and abuse detection.</li>
+    <li>To communicate with you about your account or the Service.</li>
+  </ul>
+  <p>We do <strong>not</strong> sell or rent your personal information. We do not share your data with advertisers. We do not use your financial data for marketing.</p>
+
+  <h2>3. Plaid</h2>
+  <p>We use Plaid to connect to your financial institutions. By using the Service and connecting an account, you grant Worth My Fee and Plaid the right to access and transmit your financial account data as described in this policy and in Plaid's own policy. Plaid's collection and use of your information is governed by the <a href="https://plaid.com/legal/#end-user-privacy-policy" rel="noopener">Plaid End User Privacy Policy</a>. You can manage or revoke Plaid connections at any time from the Service's settings, or through the <a href="https://my.plaid.com" rel="noopener">Plaid Portal</a>.</p>
+
+  <h2>4. How we store and protect your data</h2>
+  <ul>
+    <li>Your data is stored with Google Cloud (Firebase Authentication and Cloud Firestore) in the United States.</li>
+    <li>Plaid access tokens — the credentials that allow us to retrieve your transaction data — are encrypted with AES-256-GCM before being stored, and are only ever decrypted server-side. They are never sent to your browser or to any third party other than Plaid.</li>
+    <li>Access to your data is restricted by per-user security rules: your data is readable only by your authenticated account and by our servers.</li>
+    <li>All data is transmitted over TLS (HTTPS).</li>
+  </ul>
+
+  <h2>5. Data retention and deletion</h2>
+  <ul>
+    <li>We retain your data for as long as your account is active.</li>
+    <li><strong>Disconnecting a card</strong> revokes our access at Plaid and deletes the stored connection token.</li>
+    <li><strong>Deleting your account</strong> removes your account record, connected cards, benefits, redemptions, loyalty details, and all Plaid connections. This is available in the Service's settings and takes effect immediately.</li>
+    <li>Residual copies in encrypted backups are purged on the backup provider's standard cycle.</li>
+  </ul>
+
+  <h2>6. Sharing</h2>
+  <p>We share data only with the service providers required to operate the Service — Plaid (bank connectivity) and Google Cloud (authentication, database, and hosting) — each acting under their own security and privacy obligations. We may disclose information if required by law, or to protect the rights, safety, or property of Worth My Fee or others. If Worth My Fee is involved in a merger or acquisition, your data may transfer with the business; this policy would continue to apply until amended with notice to you.</p>
+
+  <h2>7. Your rights</h2>
+  <p>Depending on where you live, you may have rights to access, correct, export, or delete your personal information. You can exercise all of these directly in the Service (settings → export / delete), or by emailing us. We respond to all requests within 30 days.</p>
+
+  <h2>8. Children</h2>
+  <p>The Service is not directed to individuals under 18, and we do not knowingly collect information from them.</p>
+
+  <h2>9. Changes to this policy</h2>
+  <p>If we make material changes, we will notify you by email or an in-app notice before the changes take effect, and update the effective date above.</p>
+
+  <h2>10. Contact</h2>
+  <p>Questions or requests: <a href="mailto:privacy@worthmyfee.com">privacy@worthmyfee.com</a>.</p>
+</main>
+
+<footer>
+  <div class="foot-inner">© 2026 Worth My Fee · <a href="index.html">worthmyfee.com</a></div>
+</footer>
+
+</body>
+</html>
