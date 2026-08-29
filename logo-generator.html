@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WMF logo generator</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..700&display=swap">
+<style>body{background:#ddd;margin:2rem;font-family:sans-serif}canvas{background:#fff;margin:0.5rem;box-shadow:0 2px 8px rgba(0,0,0,.2)}</style>
+</head>
+<body>
+<p>Renders the Worth My Fee logo tiles. Open, wait for fonts, canvases draw themselves.</p>
+<canvas id="tile" width="1024" height="1024" style="width:256px;height:256px"></canvas>
+<canvas id="wordmark" width="1800" height="400" style="width:450px;height:100px"></canvas>
+<script>
+const GREEN = '#25604A';
+const GREEN_LIGHT = '#8CC3A4';
+const PAPER = '#F7F5F0';
+const INK = '#20231F';
+
+async function draw() {
+  await document.fonts.load('600 500px Newsreader');
+  await document.fonts.load('italic 600 500px Newsreader');
+  await document.fonts.ready;
+
+  // --- Square tile: green rounded square, "W?" ---
+  {
+    const c = document.getElementById('tile');
+    const x = c.getContext('2d');
+    const S = 1024, R = 200;
+    x.clearRect(0, 0, S, S);
+    x.beginPath();
+    x.roundRect(0, 0, S, S, R);
+    x.fillStyle = GREEN;
+    x.fill();
+
+    x.textBaseline = 'alphabetic';
+    const wFont = '600 520px Newsreader';
+    const qFont = 'italic 600 520px Newsreader';
+    x.font = wFont;
+    const wWidth = x.measureText('W').width;
+    x.font = qFont;
+    const qWidth = x.measureText('?').width;
+    const gap = 30;
+    const total = wWidth + gap + qWidth;
+    const baseline = S / 2 + 185;
+    let cx = (S - total) / 2;
+    x.font = wFont;
+    x.fillStyle = PAPER;
+    x.fillText('W', cx, baseline);
+    cx += wWidth + gap;
+    x.font = qFont;
+    x.fillStyle = GREEN_LIGHT;
+    x.fillText('?', cx, baseline);
+  }
+
+  // --- Horizontal wordmark: "Worth My Fee?" ink on transparent ---
+  {
+    const c = document.getElementById('wordmark');
+    const x = c.getContext('2d');
+    x.clearRect(0, 0, 1800, 400);
+    x.textBaseline = 'alphabetic';
+    const font = '600 240px Newsreader';
+    const qFont = 'italic 600 240px Newsreader';
+    x.font = font;
+    const tWidth = x.measureText('Worth My Fee').width;
+    x.font = qFont;
+    const qWidth = x.measureText('?').width;
+    const total = tWidth + qWidth + 8;
+    let cx = (1800 - total) / 2;
+    const baseline = 265;
+    x.font = font;
+    x.fillStyle = INK;
+    x.fillText('Worth My Fee', cx, baseline);
+    x.font = qFont;
+    x.fillStyle = GREEN;
+    x.fillText('?', cx + tWidth + 8, baseline);
+  }
+  window.__logosReady = true;
+}
+draw();
+</script>
+</body>
+</html>
