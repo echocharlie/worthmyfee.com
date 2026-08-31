@@ -60,7 +60,14 @@
     font-weight: 600; font-size: 0.95rem; padding: 0.85rem 1.6rem; border-radius: 4px;
   }
   .btn:hover { background: var(--green-deep); }
-  .cta-note { font-size: 0.82rem; color: var(--muted); }
+  .btn-secondary { background: transparent; color: var(--green); border: 1px solid var(--green); }
+  .btn-secondary:hover { background: var(--green-soft); color: var(--green-deep); }
+  .cta-note { font-size: 0.82rem; color: var(--muted); width: 100%; }
+  .press-line {
+    font-family: "Newsreader", Georgia, serif; font-style: italic; font-size: 1.02rem;
+    color: var(--rust); border-left: 3px solid var(--rust); padding-left: 0.9rem;
+    max-width: 30rem; margin: 0 0 1.6rem;
+  }
 
   /* hero receipt */
   .receipt {
@@ -141,9 +148,11 @@
       <div class="kicker">The audit for premium credit cards</div>
       <h1>Your card advertises $2,000 in credits. How much can <em>you</em> actually reach?</h1>
       <p class="lede">Worth My Fee connects to your cards, reads a year of real spending, and audits every advertised credit against how you actually live — then tells you, card by card: worth the fee, or not.</p>
+      <p class="press-line">The Wall Street Journal says high-end cardholders are finding it harder to get their money's worth. We do the subtraction.</p>
       <div class="cta-row">
-        <a class="btn" href="mailto:hello@worthmyfee.com?subject=Early%20access">Get early access</a>
-        <span class="cta-note">Launching soon. One-time audit — not another subscription.</span>
+        <a class="btn" href="https://worthmyfee-651039008302.us-central1.run.app/#demo-audit">See a live sample audit</a>
+        <a class="btn btn-secondary" href="mailto:hello@worthmyfee.com?subject=Early%20access">Get early access</a>
+        <span class="cta-note">Free for founding users — no subscription, ever.</span>
       </div>
     </div>
     <div class="receipt" aria-label="Sample audit result">
@@ -224,7 +233,8 @@
   <div class="wrap">
     <h2>WMF, bro?</h2>
     <p>Run the audit once. Know what every card is actually worth — before the next annual fee posts.</p>
-    <a class="btn" href="mailto:hello@worthmyfee.com?subject=Early%20access">Get early access</a>
+    <a class="btn" href="https://worthmyfee-651039008302.us-central1.run.app/#demo-audit">See a live sample audit</a>
+    <a class="btn btn-secondary" style="margin-left:0.75rem" href="mailto:hello@worthmyfee.com?subject=Early%20access">Get early access</a>
   </div>
 </section>
 
