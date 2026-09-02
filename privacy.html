@@ -47,10 +47,10 @@
 
   <h2>1. Information we collect</h2>
   <ul>
-    <li><strong>Account information.</strong> When you sign in with Google, we receive your email address and a unique account identifier. We use this to create and secure your account.</li>
+    <li><strong>Account information.</strong> When you sign in with Google or with an email link, we receive your email address and a unique account identifier. We use this to create and secure your account.</li>
     <li><strong>Financial account data via Plaid.</strong> When you choose to connect a credit card, we use Plaid Inc. ("Plaid") to retrieve read-only data about that account: account name and type, and transaction history (dates, amounts, merchant names, and categories). We use this solely to analyze which card benefits your spending can reach. <strong>We never receive, see, or store your banking username or password</strong> — you authenticate directly with your bank through Plaid, typically via your bank's own sign-in page.</li>
     <li><strong>Information you provide.</strong> Which card an unrecognized account is (when your bank reports a program name instead of a card name), and loyalty-program details you choose to share (for example, hotel or airline status levels, stays or flights per year, and a status you are requalifying for). This information powers the benefit and conflict analysis you ask us to perform.</li>
-    <li><strong>Payment information.</strong> If you buy an audit year, Stripe processes the payment. Card numbers are entered on Stripe's pages and never reach our systems; we store only the fact and date of the purchase and Stripe's session identifier.</li>
+    <li><strong>Payment information.</strong> If you buy an audit year, Stripe processes the payment. Card numbers are entered on Stripe's pages and never reach our systems; we store the fact and date of the purchase, Stripe's identifiers for your customer record, checkout session and subscription, the subscription's status, and whether it was refunded or canceled. Stripe keeps its own payment records after you delete your account, under Stripe's privacy policy.</li>
     <li><strong>Technical information.</strong> Standard server logs (IP address, browser type, timestamps) used for security and reliability, and error reports sent to Sentry that contain technical diagnostics and your account identifier — never your transactions, email, or name. We do not use advertising trackers.</li>
   </ul>
 
@@ -79,7 +79,7 @@
     <li>We retain your data for as long as your account is active.</li>
     <li><strong>Disconnecting a card</strong> revokes our access at Plaid and deletes the stored connection token.</li>
     <li><strong>Disconnecting a bank</strong> also deletes its cached transactions.</li>
-    <li><strong>Deleting your account</strong> removes your account record, card selections, loyalty details, cached transactions, and all Plaid connections (we revoke each one at Plaid first). This is available in the Service's settings and takes effect immediately.</li>
+    <li><strong>Deleting your account</strong> removes your account record, card selections, loyalty details, cached transactions, and all Plaid connections (we revoke each one at Plaid first). It also cancels any active subscription. This is available in the Service's settings and takes effect immediately. One server-only record survives: that your account identifier once held a founding-cohort slot (no email, no transactions), so a deleted account cannot claim a second free window.</li>
     <li>If your audit year ends and you do not renew, we disconnect your banks at Plaid and delete their cached transactions 30 days later; the app shows the date for those 30 days. Free-tier connections (no audit year) are removed 30 days after linking. Your account and settings remain until you delete them, and you can re-link at any time.</li>
     <li>Residual copies in encrypted backups are purged on the backup provider's standard cycle.</li>
   </ul>
