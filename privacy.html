@@ -40,7 +40,7 @@
 </nav>
 
 <main>
-  <div class="updated">Effective date: August 28, 2026</div>
+  <div class="updated">Effective date: September 2, 2026</div>
   <h1>Privacy Policy</h1>
 
   <p>This policy describes how Worth My Fee ("we," "us") collects, uses, stores, and deletes your information when you use our website and application (the "Service"). The short version: we collect the minimum needed to audit your card benefits, we never see or store your bank credentials, we don't sell your data, and you can delete everything at any time.</p>
@@ -49,8 +49,9 @@
   <ul>
     <li><strong>Account information.</strong> When you sign in with Google, we receive your email address and a unique account identifier. We use this to create and secure your account.</li>
     <li><strong>Financial account data via Plaid.</strong> When you choose to connect a credit card, we use Plaid Inc. ("Plaid") to retrieve read-only data about that account: account name and type, and transaction history (dates, amounts, merchant names, and categories). We use this solely to analyze which card benefits your spending can reach. <strong>We never receive, see, or store your banking username or password</strong> — you authenticate directly with your bank through Plaid, typically via your bank's own sign-in page.</li>
-    <li><strong>Information you provide.</strong> Cards you add, annual fees and renewal dates, benefits you track, redemptions you log, and loyalty-program details you choose to share (for example, hotel or airline status levels). This information powers the benefit and conflict analysis you ask us to perform.</li>
-    <li><strong>Technical information.</strong> Standard server logs (IP address, browser type, timestamps) used for security and reliability. We do not use advertising trackers.</li>
+    <li><strong>Information you provide.</strong> Which card an unrecognized account is (when your bank reports a program name instead of a card name), and loyalty-program details you choose to share (for example, hotel or airline status levels, stays or flights per year, and a status you are requalifying for). This information powers the benefit and conflict analysis you ask us to perform.</li>
+    <li><strong>Payment information.</strong> If you buy an audit year, Stripe processes the payment. Card numbers are entered on Stripe's pages and never reach our systems; we store only the fact and date of the purchase and Stripe's session identifier.</li>
+    <li><strong>Technical information.</strong> Standard server logs (IP address, browser type, timestamps) used for security and reliability, and error reports sent to Sentry that contain technical diagnostics and your account identifier — never your transactions, email, or name. We do not use advertising trackers.</li>
   </ul>
 
   <h2>2. How we use your information</h2>
@@ -68,6 +69,7 @@
   <ul>
     <li>Your data is stored with Google Cloud (Firebase Authentication and Cloud Firestore) in the United States.</li>
     <li>Plaid access tokens — the credentials that allow us to retrieve your transaction data — are encrypted with AES-256-GCM before being stored, and are only ever decrypted server-side. They are never sent to your browser or to any third party other than Plaid.</li>
+    <li>To avoid re-downloading your history from Plaid on every audit, we keep a server-side cache of your transactions (dates, amounts, merchant names, and categories — never card numbers) for each connected bank. It holds up to 24 months of history, the most Plaid provides, and is deleted when you disconnect that bank or delete your account.</li>
     <li>Access to your data is restricted by per-user security rules: your data is readable only by your authenticated account and by our servers.</li>
     <li>All data is transmitted over TLS (HTTPS).</li>
   </ul>
@@ -76,15 +78,17 @@
   <ul>
     <li>We retain your data for as long as your account is active.</li>
     <li><strong>Disconnecting a card</strong> revokes our access at Plaid and deletes the stored connection token.</li>
-    <li><strong>Deleting your account</strong> removes your account record, connected cards, benefits, redemptions, loyalty details, and all Plaid connections. This is available in the Service's settings and takes effect immediately.</li>
+    <li><strong>Disconnecting a bank</strong> also deletes its cached transactions.</li>
+    <li><strong>Deleting your account</strong> removes your account record, card selections, loyalty details, cached transactions, and all Plaid connections (we revoke each one at Plaid first). This is available in the Service's settings and takes effect immediately.</li>
+    <li>If your audit year ends and you do not renew, we may disconnect your banks at Plaid and delete their cached transactions after a notice period; your account and settings remain until you delete them.</li>
     <li>Residual copies in encrypted backups are purged on the backup provider's standard cycle.</li>
   </ul>
 
   <h2>6. Sharing</h2>
-  <p>We share data only with the service providers required to operate the Service — Plaid (bank connectivity) and Google Cloud (authentication, database, and hosting) — each acting under their own security and privacy obligations. We may disclose information if required by law, or to protect the rights, safety, or property of Worth My Fee or others. If Worth My Fee is involved in a merger or acquisition, your data may transfer with the business; this policy would continue to apply until amended with notice to you.</p>
+  <p>We share data only with the service providers required to operate the Service — Plaid (bank connectivity), Google Cloud (authentication, database, and hosting), Stripe (payments), and Sentry (error monitoring) — each acting under their own security and privacy obligations. We publish anonymized, aggregated statistics (for example, the share of advertised credits the median cardholder reaches); these never identify a person or an account. We may disclose information if required by law, or to protect the rights, safety, or property of Worth My Fee or others. If Worth My Fee is involved in a merger or acquisition, your data may transfer with the business; this policy would continue to apply until amended with notice to you.</p>
 
   <h2>7. Your rights</h2>
-  <p>Depending on where you live, you may have rights to access, correct, export, or delete your personal information. You can exercise all of these directly in the Service (settings → export / delete), or by emailing us. We respond to all requests within 30 days.</p>
+  <p>Depending on where you live, you may have rights to access, correct, export, or delete your personal information. You can delete everything directly in the Service (Settings → Delete account); for access, correction, or export requests, email us. We respond to all requests within 30 days.</p>
 
   <h2>8. Children</h2>
   <p>The Service is not directed to individuals under 18, and we do not knowingly collect information from them.</p>
