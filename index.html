@@ -165,7 +165,7 @@
       <div class="cta-row">
         <a class="btn" href="https://app.worthmyfee.com/#demo-audit">See a live sample audit</a>
         <a class="btn btn-secondary" href="https://app.worthmyfee.com/">Run it on my cards</a>
-        <span class="cta-note">First 90 days free for the first 500 founding users, then $29/year at the founding price for as long as you stay. Cancel any time.</span>
+        <span class="cta-note">First 90 days free for the first 500 founding users<span id="founding-left"></span>, then $29/year at the founding price for as long as you stay. Cancel any time.</span>
       </div>
     </div>
     <div class="receipt" aria-label="Sample audit result">
@@ -286,5 +286,13 @@
   </div>
 </footer>
 
+<script>
+  // Live founding-slot count from the app (public, cached a minute). Silent if unreachable.
+  fetch('https://app.worthmyfee.com/api/founding').then(function (r) { return r.json(); }).then(function (f) {
+    var el = document.getElementById('founding-left');
+    if (!el || typeof f.remaining !== 'number') return;
+    el.textContent = f.remaining > 0 ? ' (' + f.remaining + ' of ' + f.cap + ' left)' : ' (all ' + f.cap + ' taken)';
+  }).catch(function () {});
+</script>
 </body>
 </html>
