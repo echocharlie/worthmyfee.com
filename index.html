@@ -183,6 +183,12 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
   disable_surveys: true,
   respect_dnt: true,
 })
+// Crawler reads (`crawler_hit`). posthog-js drops bot user agents, so a page
+// fetched by a crawler that runs JavaScript (Googlebot, Bingbot, Applebot…)
+// beacons one event straight to PostHog instead. Crawlers that never run
+// scripts (GPTBot, ClaudeBot, PerplexityBot…) are invisible here — no hit is
+// not proof of no fetch. People never match: a browser UA sends nothing.
+(function(){var u=(navigator.userAgent||'').toLowerCase(),C=[['google-inspectiontool','google_inspection','search'],['googlebot-image','google_image','search'],['google-extended','google_extended','ai'],['googlebot','google','search'],['bingbot','bing','search'],['oai-searchbot','openai_search','ai'],['chatgpt-user','chatgpt_user','ai'],['gptbot','gptbot','ai'],['perplexitybot','perplexity','ai'],['perplexity-user','perplexity_user','ai'],['claudebot','claude','ai'],['claude-user','claude_user','ai'],['claude-searchbot','claude_user','ai'],['anthropic-ai','anthropic','ai'],['applebot-extended','apple_extended','ai'],['applebot','apple','search'],['duckduckbot','duckduckgo','search'],['yandexbot','yandex','search'],['baiduspider','baidu','search'],['bytespider','bytedance','ai'],['ccbot','commoncrawl','ai'],['amazonbot','amazon','search'],['meta-webindexer','meta_webindexer','search'],['meta-externalagent','meta','social'],['facebookexternalhit','meta','social'],['twitterbot','twitter','social'],['linkedinbot','linkedin','social'],['slackbot','slack','social'],['discordbot','discord','social'],['ahrefsbot','ahrefs','seo'],['semrushbot','semrush','seo'],['mj12bot','majestic','seo'],['dotbot','moz','seo']],b=null,i,p=location.pathname,s=p.split('/').filter(Boolean),k;for(i=0;i<C.length;i++)if(u.indexOf(C[i][0])>=0){b=C[i];break}if(!b&&/bot|crawler|spider|\+http/.test(u))b=[0,'other','other'];if(!b)return;k=!s.length?'home':s[0]==='cards'?(s.length>1?'card':'cards_index'):s[0]==='credits'?'credit':s[0]==='methodology'||s[0]==='about'?s[0]:'other';var e={bot:b[1],family:b[2],path:p.slice(0,200),page_kind:k,render:'js',$process_person_profile:false};if(b[1]==='other')e.ua_sample=navigator.userAgent.slice(0,80);try{fetch('https://us.i.posthog.com/i/v0/e/',{method:'POST',keepalive:true,headers:{'Content-Type':'text/plain'},body:JSON.stringify({api_key:'phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh',event:'crawler_hit',distinct_id:'crawler:'+b[1],properties:e})})}catch(x){}})();
 </script>
 <script type="application/ld+json">
 {
