@@ -3,8 +3,8 @@
 // the other IndexNow engines which worthmyfee.com pages changed. Bing's index
 // also feeds DuckDuckGo, Yahoo and ChatGPT search, which is the point.
 //
-// .github/workflows/indexnow.yml runs this after GitHub Pages has published a
-// push to main. Dependency-free (Node 22): this repo has no package.json.
+// .github/workflows/deploy.yml runs this after a push to main is live on both
+// Cloud Run (the site) and GitHub Pages (the fallback). Dependency-free (Node 22): this repo has no package.json.
 //
 //   node scripts/indexnow.mjs --changed <base> <head>   # pages whose HTML changed in base..head
 //   node scripts/indexnow.mjs --all                     # every sitemap URL (first run, bulk regen)

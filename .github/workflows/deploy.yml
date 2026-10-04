@@ -1,0 +1,211 @@
+name: Deploy
+
+# worthmyfee.com runs on Cloud Run (service worthmyfee-site, project
+# worthmyfee, us-central1); GitHub Pages keeps building every push as the
+# rollback. Runbook: docs/cloud-run.md.
+#
+#   test      unit tests + boot the real server and curl it (every push and PR)
+#   deploy    gcloud run deploy --source . via Workload Identity Federation
+#             (no key files); skipped, with a notice, until the repo variables
+#             WIF_PROVIDER / WIF_SERVICE_ACCOUNT exist
+#   indexnow  tells the IndexNow engines (Bing, Yandex, Seznam, Naver…) which
+#             pages the push changed (scripts/indexnow.mjs), once the new pages
+#             are live on Cloud Run AND on Pages — an engine fetching a
+#             brand-new page or the key file must not get a 404 from either
+#
+# Manual run with "all" submits every sitemap URL: use it after a bulk
+# regeneration whose diff spans several pushes.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      all:
+        description: 'Submit every sitemap URL instead of the last push''s changed pages'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  # Two pushes never deploy at once; a queued run waits instead of cancelling
+  # a deploy halfway. PRs get their own group so they never block main.
+  group: ${{ github.event_name == 'pull_request' && format('test-{0}', github.ref) || 'deploy' }}
+  cancel-in-progress: false
+
+env:
+  PROJECT: worthmyfee
+  REGION: us-central1
+  SERVICE: worthmyfee-site
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+      - name: Install server dependencies
+        working-directory: server
+        run: npm ci
+      - name: Unit tests
+        run: node --test scripts/*.test.mjs server/*.test.mjs
+      - name: Boot the server and curl it
+        # The image runs exactly this (SITE_DIR=/site there). No PostHog key:
+        # crawler logging is off, the pages are served all the same.
+        run: |
+          (cd server && SITE_DIR=.. PORT=3200 node server.mjs > ../server.log 2>&1 &)
+          for i in $(seq 1 20); do
+            if curl -fsS http://localhost:3200/healthz; then echo; break; fi
+            if [ "$i" = 20 ]; then echo "server did not answer /healthz"; cat server.log; exit 1; fi
+            sleep 1
+          done
+          fail=0
+          expect() { # expect <status> <path> [redirect target]
+            got=$(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' "http://localhost:3200$2")
+            code=${got%% *}; loc=${got#* }
+            if [ "$code" != "$1" ] || { [ -n "${3:-}" ] && [ "$loc" != "$3" ]; }; then
+              echo "FAIL $2: got $got, want $1 ${3:-}"; fail=1
+            else
+              echo "ok   $2 → $code ${loc}"
+            fi
+          }
+          expect 200 /
+          expect 200 /cards/
+          expect 301 /cards/amex-platinum http://localhost:3200/cards/amex-platinum/
+          expect 200 /cards/amex-platinum/
+          expect 200 /robots.txt
+          expect 200 /sitemap.xml
+          expect 200 /f0290cd3888f72fc154819a874bea7b5.txt
+          expect 404 /server/package.json
+          expect 404 /docs/cloud-run.md
+          expect 404 /scripts/indexnow.mjs
+          expect 404 /.github/workflows/deploy.yml
+          expect 404 /no-such-page
+          curl -fsS http://localhost:3200/f0290cd3888f72fc154819a874bea7b5.txt | grep -qx f0290cd3888f72fc154819a874bea7b5 || { echo "FAIL key file content"; fail=1; }
+          [ "$fail" = 0 ] || { cat server.log; exit 1; }
+
+  deploy:
+    needs: test
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write   # Workload Identity Federation: GitHub's OIDC token → the deployer service account
+    steps:
+      - name: Check the GCP repo variables
+        id: vars
+        run: |
+          if [ -z "${{ vars.WIF_PROVIDER }}" ] || [ -z "${{ vars.WIF_SERVICE_ACCOUNT }}" ]; then
+            echo "::notice::WIF_PROVIDER / WIF_SERVICE_ACCOUNT are not set — skipping the Cloud Run deploy (docs/cloud-run.md, owner steps)."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+          if [ -z "${{ vars.POSTHOG_API_KEY }}" ]; then
+            echo "::warning::POSTHOG_API_KEY is not set — the service will run with crawler logging off."
+          fi
+      - uses: actions/checkout@v4
+        if: steps.vars.outputs.ready == 'true'
+      - uses: google-github-actions/auth@v2
+        if: steps.vars.outputs.ready == 'true'
+        with:
+          workload_identity_provider: ${{ vars.WIF_PROVIDER }}
+          service_account: ${{ vars.WIF_SERVICE_ACCOUNT }}
+      - uses: google-github-actions/setup-gcloud@v2
+        if: steps.vars.outputs.ready == 'true'
+      - name: Deploy to Cloud Run
+        if: steps.vars.outputs.ready == 'true'
+        # --source . builds the Dockerfile with Cloud Build (the app's deploy.sh
+        # does the same). --update-env-vars merges; --set-env-vars would wipe
+        # anything set on the service by hand.
+        env:
+          POSTHOG_API_KEY: ${{ vars.POSTHOG_API_KEY }}
+        run: |
+          gcloud run deploy "$SERVICE" --source . --project "$PROJECT" --region "$REGION" \
+            --allow-unauthenticated --min-instances 1 --max-instances 3 --memory 256Mi --cpu 1 \
+            --port 8080 --service-account "wmf-site@${PROJECT}.iam.gserviceaccount.com" \
+            --update-env-vars "POSTHOG_API_KEY=${POSTHOG_API_KEY},GIT_SHA=${GITHUB_SHA}" \
+            --update-labels "git-sha=${GITHUB_SHA::7}" \
+            --quiet
+      - name: Wait until the new revision serves all traffic, then curl it
+        if: steps.vars.outputs.ready == 'true'
+        # /health, not /healthz: Cloud Run's front end reserves some paths
+        # ending in "z", so /healthz may never reach the container there.
+        run: |
+          for i in $(seq 1 30); do
+            svc=$(gcloud run services describe "$SERVICE" --project "$PROJECT" --region "$REGION" --format=json)
+            url=$(jq -r '.status.url' <<<"$svc")
+            latest=$(jq -r '.status.latestReadyRevisionName // ""' <<<"$svc")
+            serving=$(jq -r '[.status.traffic[]? | select(.percent == 100) | .revisionName] | first // ""' <<<"$svc")
+            sha=$(gcloud run revisions describe "$latest" --project "$PROJECT" --region "$REGION" --format=json 2>/dev/null \
+              | jq -r '.spec.containers[0].env[]? | select(.name == "GIT_SHA") | .value' || true)
+            echo "latest ready: $latest (GIT_SHA ${sha:0:7}), serving 100%: $serving"
+            if [ -n "$latest" ] && [ "$sha" = "$GITHUB_SHA" ] && [ "$serving" = "$latest" ]; then break; fi
+            if [ "$i" = 30 ]; then echo "revision for ${GITHUB_SHA:0:7} is not serving after 5 minutes"; exit 1; fi
+            sleep 10
+          done
+          echo "service URL: $url"
+          curl -fsS "$url/health" | grep -qx ok
+          test "$(curl -s -o /dev/null -w '%{http_code}' "$url/cards/amex-platinum")" = 301
+          test "$(curl -s -o /dev/null -w '%{http_code}' "$url/cards/amex-platinum/")" = 200
+          test "$(curl -s -o /dev/null -w '%{http_code}' "$url/server/package.json")" = 404
+          curl -fsS "$url/f0290cd3888f72fc154819a874bea7b5.txt" | grep -qx f0290cd3888f72fc154819a874bea7b5
+          echo "deployed ${GITHUB_SHA:0:7}"
+
+  indexnow:
+    needs: [test, deploy]
+    # Runs after a deploy, and also while the deploy is skipped (GCP not set
+    # up yet), so IndexNow keeps working on GitHub Pages alone.
+    if: >-
+      always() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main' &&
+      needs.test.result == 'success' && (needs.deploy.result == 'success' || needs.deploy.result == 'skipped')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Wait for GitHub Pages to publish this commit
+        # Pages is the rollback: if DNS ever points back at it, the URLs we
+        # submitted must exist there too.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 40); do
+            read -r status commit < <(gh api "repos/${{ github.repository }}/pages/builds/latest" --jq '.status + " " + .commit' || echo "error none")
+            echo "pages build: $status @ ${commit:0:7}"
+            if [ "$commit" = "$GITHUB_SHA" ] && [ "$status" = "built" ]; then exit 0; fi
+            if [ "$commit" = "$GITHUB_SHA" ] && [ "$status" = "errored" ]; then echo "Pages build errored"; exit 1; fi
+            # A newer push already built is fine too: it contains this commit.
+            if [ "$status" = "built" ] && [ "$commit" != "none" ] && git merge-base --is-ancestor "$GITHUB_SHA" "$commit" 2>/dev/null; then exit 0; fi
+            sleep 15
+          done
+          echo "Pages did not publish ${GITHUB_SHA:0:7} within 10 minutes"; exit 1
+      - name: Submit
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.all }}" = "true" ]; then
+            node scripts/indexnow.mjs --all
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            node scripts/indexnow.mjs --changed HEAD~1 HEAD
+          elif [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            node scripts/indexnow.mjs --changed HEAD~1 HEAD
+          else
+            node scripts/indexnow.mjs --changed "$BEFORE" "$GITHUB_SHA"
+          fi
