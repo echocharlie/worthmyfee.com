@@ -1,0 +1,14 @@
+{
+  "name": "worthmyfee-site",
+  "private": true,
+  "description": "Serves the worthmyfee.com static site on Cloud Run and logs crawler fetches (docs/cloud-run.md).",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test *.test.mjs"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

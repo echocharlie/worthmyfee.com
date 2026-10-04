@@ -1,0 +1,22 @@
+# Everything that is not a served file (server/ itself is needed by the
+# server stage and is dropped from /site in the Dockerfile). The server also
+# refuses these paths (server/static.mjs NOT_SERVED); a test keeps the lists
+# in sync.
+.git
+.github
+.gitignore
+.nojekyll
+.dockerignore
+.gcloudignore
+**/.DS_Store
+*.log
+**/node_modules
+server/node_modules
+server/*.test.mjs
+docs
+scripts
+Dockerfile
+README.md
+CNAME
+package.json
+package-lock.json
