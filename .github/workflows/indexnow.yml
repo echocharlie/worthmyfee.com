@@ -1,0 +1,67 @@
+name: IndexNow
+
+# Tells the IndexNow engines (Bing, Yandex, Seznam, Naver…) which pages a push
+# to main changed. Script: scripts/indexnow.mjs; key file: the
+# <key>.txt at the repo root.
+#
+# Engines fetch the URLs (and the key file) within minutes, so the submit
+# waits until GitHub Pages has published this exact commit; otherwise a
+# brand-new page or a first-time key file could still be a 404.
+#
+# Manual run with "all" submits every sitemap URL: use it once after the key
+# first ships, and after a bulk regeneration whose diff spans several pushes.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      all:
+        description: 'Submit every sitemap URL instead of the last push''s changed pages'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  pages: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Unit tests
+        run: node --test scripts/*.test.mjs
+      - name: Wait for GitHub Pages to publish this commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 40); do
+            read -r status commit < <(gh api "repos/${{ github.repository }}/pages/builds/latest" --jq '.status + " " + .commit' || echo "error none")
+            echo "pages build: $status @ ${commit:0:7}"
+            if [ "$commit" = "$GITHUB_SHA" ] && [ "$status" = "built" ]; then exit 0; fi
+            if [ "$commit" = "$GITHUB_SHA" ] && [ "$status" = "errored" ]; then echo "Pages build errored"; exit 1; fi
+            # A newer push already built is fine too: it contains this commit.
+            if [ "$status" = "built" ] && [ "$commit" != "none" ] && git merge-base --is-ancestor "$GITHUB_SHA" "$commit" 2>/dev/null; then exit 0; fi
+            sleep 15
+          done
+          echo "Pages did not publish ${GITHUB_SHA:0:7} within 10 minutes"; exit 1
+      - name: Submit
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.all }}" = "true" ]; then
+            node scripts/indexnow.mjs --all
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            node scripts/indexnow.mjs --changed HEAD~1 HEAD
+          elif [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            node scripts/indexnow.mjs --changed HEAD~1 HEAD
+          else
+            node scripts/indexnow.mjs --changed "$BEFORE" "$GITHUB_SHA"
+          fi
