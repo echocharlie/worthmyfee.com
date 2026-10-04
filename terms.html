@@ -12,7 +12,7 @@
 <style>
   :root {
     --paper: #F7F5F0; --paper-raised: #FFFFFF; --ink: #20231F; --ink-soft: #4A4D45;
-    --muted: #75786F; --rule: #D9D5CA; --rule-strong: #B9B5A8; --green: #25604A;
+    --muted: #686B62; --rule: #D9D5CA; --rule-strong: #B9B5A8; --green: #25604A;
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Libre Franklin", "Helvetica Neue", Arial, sans-serif; line-height: 1.7; }
@@ -51,10 +51,10 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </head>
 <body>
 
-<nav>
+<nav aria-label="Main">
   <div class="nav-inner">
-    <a class="wordmark" href="index.html">Worth&nbsp;My&nbsp;Fee<span class="q">?</span></a>
-    <a class="back" href="index.html">← Back</a>
+    <a class="wordmark" href="/">Worth&nbsp;My&nbsp;Fee<span class="q">?</span></a>
+    <a class="back" href="/"><span aria-hidden="true">←</span> Back to worthmyfee.com</a>
   </div>
 </nav>
 
@@ -106,7 +106,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </main>
 
 <footer>
-  <div class="foot-inner">© 2026 Worth My Fee · <a href="index.html">worthmyfee.com</a></div>
+  <div class="foot-inner">© 2026 Worth My Fee · <a href="/">worthmyfee.com</a></div>
 </footer>
 
 </body>
