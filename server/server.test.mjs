@@ -6,6 +6,7 @@ import { createServer, request } from 'node:http';
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gunzipSync } from 'node:zlib';
 import { after, before, describe, it } from 'node:test';
 import { createApp } from './server.mjs';
 
@@ -54,6 +55,23 @@ describe('server: GitHub Pages behaviour', () => {
     assert.ok(r.headers.etag);
     assert.ok(r.headers['last-modified']);
     assert.equal(r.headers['x-powered-by'], undefined);
+  });
+  it('gzips pages for clients that accept it, and only for them', async () => {
+    const r = await new Promise((resolve, reject) => {
+      const req = request({ host: '127.0.0.1', port, path: '/', headers: { 'accept-encoding': 'gzip' } }, (res) => {
+        const chunks = [];
+        res.on('data', (c) => chunks.push(c));
+        res.on('end', () => resolve({ headers: res.headers, body: Buffer.concat(chunks) }));
+      });
+      req.on('error', reject);
+      req.end();
+    });
+    assert.equal(r.headers['content-encoding'], 'gzip');
+    assert.equal(gunzipSync(r.body).toString('utf8'), readFileSync(join(SITE, 'index.html'), 'utf8'));
+    assert.equal(r.headers['cache-control'], 'public, max-age=600');
+    assert.match(r.headers.vary ?? '', /accept-encoding/i);
+    const plain = await raw(port, '/');
+    assert.equal(plain.headers['content-encoding'], undefined);
   });
   it('conditional GET answers 304', async () => {
     const { headers } = await raw(port, '/cards/');

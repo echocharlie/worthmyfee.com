@@ -12,6 +12,7 @@
  *   GIT_SHA           the deployed commit, printed at boot
  */
 import express from 'express';
+import compression from 'compression';
 import { existsSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -34,6 +35,11 @@ export function createApp({ siteDir, posthogKey = '', posthogHost = POSTHOG_DEFA
     res.set(SECURITY_HEADERS);
     next();
   });
+
+  // gzip/deflate for clients that ask (Cloud Run does not compress for us):
+  // card pages are ~40KB of HTML and ~10KB gzipped. Responses under 1KB and
+  // clients without Accept-Encoding get the bytes as stored.
+  app.use(compression());
 
   // www → apex before anything else, as Pages does.
   app.use((req, res, next) => {
