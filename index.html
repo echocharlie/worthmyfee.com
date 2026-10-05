@@ -30,7 +30,7 @@
     --paper-raised: #FFFFFF;
     --ink: #20231F;
     --ink-soft: #4A4D45;
-    --muted: #75786F;
+    --muted: #686B62; /* 4.98:1 on paper (#75786F was 4.12:1, below AA) */
     --rule: #D9D5CA;
     --rule-strong: #B9B5A8;
     --green: #25604A;
@@ -50,10 +50,20 @@
 
   /* nav */
   nav { border-bottom: 1px solid var(--rule); background: var(--paper); }
-  .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 0; }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem 1.5rem; padding-block: 1.1rem; flex-wrap: wrap; } /* padding-block: the shorthand wiped .wrap's side gutter */
   .wordmark { font-family: "Newsreader", Georgia, serif; font-weight: 700; font-size: 1.25rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
   .wordmark .q { color: var(--green); }
-  .nav-links { display: flex; gap: 1.5rem; font-size: 0.9rem; }
+  .nav-links { display: flex; gap: 0.4rem 1.5rem; font-size: 0.9rem; flex-wrap: wrap; }
+  /* Phones: the anchor links below the wordmark on their own row; Security and
+     Privacy are in the page and the footer, so they drop out of the bar. */
+  @media (max-width: 640px) {
+    .nav-inner { padding-block: 0.9rem; }
+    .nav-links { width: 100%; gap: 0.35rem 1.1rem; }
+    .nav-links .nav-extra { display: none; }
+  }
+  .skip { position: absolute; left: -9999px; top: 0.5rem; z-index: 10; background: var(--ink); color: #fff; padding: 0.5rem 0.9rem; border-radius: 4px; text-decoration: none; }
+  .skip:focus { left: 0.5rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
   .nav-links a { color: var(--ink-soft); text-decoration: none; }
   .nav-links a:hover { color: var(--green); }
 
@@ -96,7 +106,7 @@
     box-shadow: 0 1px 2px rgba(32,35,31,0.06), 0 8px 28px rgba(32,35,31,0.07);
     padding: 1.6rem 1.7rem; font-variant-numeric: tabular-nums;
   }
-  .receipt h3 {
+  .receipt .r-head {
     font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; font-weight: 500;
     letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
     margin: 0 0 1rem; border-bottom: 3px double var(--rule-strong); padding-bottom: 0.7rem;
@@ -164,6 +174,19 @@
   .faq summary:hover { color: var(--green); }
   .faq details p { margin: 0 0 1rem; font-size: 0.93rem; color: var(--ink-soft); max-width: none; }
 
+  /* find your card */
+  .card-list { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 0 2rem; max-width: 56rem; }
+  .card-list li { border-bottom: 1px dotted var(--rule); }
+  .card-list a { display: block; padding: 0.6rem 0; color: var(--ink); text-decoration: none; font-weight: 500; }
+  .card-list a:hover { color: var(--green); }
+  .card-list a::after { content: " →" / ""; color: var(--muted); }
+  .all-cards { margin-top: 1.2rem; }
+
+  /* founder note */
+  .founder { max-width: 40rem; }
+  .founder p { font-family: "Newsreader", Georgia, serif; font-size: 1.25rem; line-height: 1.5; color: var(--ink); margin: 0 0 0.8rem; }
+  .founder .sig { font-family: "Libre Franklin", sans-serif; font-size: 0.9rem; color: var(--ink-soft); }
+
   footer { border-top: 3px double var(--rule-strong); background: var(--paper); padding: 2.5rem 0 3rem; }
   .foot-grid { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; font-size: 0.85rem; color: var(--muted); }
   .foot-grid a { color: var(--ink-soft); }
@@ -202,7 +225,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
    "name": "Which cards and banks do you cover?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "91 cards and 229 credits across Chase, American Express, Capital One, Citi, Bank of America, Barclays, Bilt, Wells Fargo, Robinhood and U.S. Bank, personal and business. Every credit cites the issuer's own page with an as-of date, and we re-check those pages against the catalog every week; the full list is on the methodology page. You can connect any U.S. institution Plaid supports, which includes every issuer in the catalog. Hold a card we don't cover yet? Tell us from Settings → Support and we add it."
+    "text": "91 cards and 229 credits across Chase, American Express, Capital One, Citi, Bank of America, Barclays, Bilt, Wells Fargo, Robinhood and U.S. Bank, personal and business. Every credit cites the issuer's own page with an as-of date, and we re-check those pages against the catalog every week; every card and its credits are itemized on the cards pages, and the scoring constants are on the methodology page. You can connect any U.S. institution Plaid supports, which includes every issuer in the catalog. Hold a card we don't cover yet? Tell us from Settings → Support and we add it."
    }
   },
   {
@@ -401,7 +424,8 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </head>
 <body>
 
-<nav>
+<a class="skip" href="#main">Skip to content</a>
+<nav aria-label="Main">
   <div class="wrap nav-inner">
     <a class="wordmark" href="/">Worth&nbsp;My&nbsp;Fee<span class="q">?</span></a>
     <div class="nav-links">
@@ -409,13 +433,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
       <a href="/cards/">Cards</a>
       <a href="/methodology/">Methodology</a>
       <a href="#pricing">Pricing</a>
-      <a href="#security">Security</a>
+      <a class="nav-extra" href="#security">Security</a>
       <a href="#faq">FAQ</a>
-      <a href="privacy.html">Privacy</a>
+      <a class="nav-extra" href="privacy.html">Privacy</a>
     </div>
   </div>
 </nav>
 
+<main id="main">
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -429,13 +454,13 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
         <span class="cta-note">First 90 days free for the first 500 founding users<span id="founding-left"></span>, then $29/year at the founding price for as long as you stay. Cancel any time.</span>
       </div>
     </div>
-    <div class="receipt" aria-label="Sample audit result">
-      <h3>Sample audit · modeled on a real four-card portfolio</h3>
-      <div class="r-line"><span class="lbl">Portal hotel credit<span>trap: voids your elite recognition when used</span></span><span class="amt zero">$100 → $0</span></div>
-      <div class="r-line"><span class="lbl">Ticket + fitness credits<span>zero matching spend in 12 months</span></span><span class="amt zero">$420 → $0</span></div>
-      <div class="r-line"><span class="lbl">Delivery credit<span>monthly reset, 5 orders all year</span></span><span class="amt">$300 → $42</span></div>
-      <div class="r-line"><span class="lbl">Rideshare credits<span>you already ride every month</span></span><span class="amt ok">$320 → $320</span></div>
-      <div class="r-total"><span>All 26 credits, advertised vs. yours</span><span class="amt">$6,062 → $762</span></div>
+    <div class="receipt" role="group" aria-labelledby="receipt-head">
+      <p class="r-head" id="receipt-head">Sample audit · modeled on a real four-card portfolio</p>
+      <div class="r-line"><span class="lbl">Portal hotel credit<span>trap: voids your elite recognition when used</span></span><span class="amt zero">$100 <span aria-hidden="true">→</span><span class="sr-only">, worth to you</span> $0</span></div>
+      <div class="r-line"><span class="lbl">Ticket + fitness credits<span>zero matching spend in 12 months</span></span><span class="amt zero">$420 <span aria-hidden="true">→</span><span class="sr-only">, worth to you</span> $0</span></div>
+      <div class="r-line"><span class="lbl">Delivery credit<span>monthly reset, 5 orders all year</span></span><span class="amt">$300 <span aria-hidden="true">→</span><span class="sr-only">, worth to you</span> $42</span></div>
+      <div class="r-line"><span class="lbl">Rideshare credits<span>you already ride every month</span></span><span class="amt ok">$320 <span aria-hidden="true">→</span><span class="sr-only">, worth to you</span> $320</span></div>
+      <div class="r-total"><span>All 26 credits, advertised vs. yours</span><span class="amt">$6,062 <span aria-hidden="true">→</span><span class="sr-only">, worth to you</span> $762</span></div>
       <p class="r-foot">13¢ reachable per advertised dollar. The annual fees on this portfolio: $2,180. <a href="https://app.worthmyfee.com/#demo-audit">See the full audit</a>.</p>
     </div>
   </div>
@@ -462,6 +487,28 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
         <p>Every credit scored against your real behavior: claim it, ignore it, or it's a trap. Then the bottom line per card — keep it, downgrade it, or cancel it before the fee posts.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="cards">
+  <div class="wrap">
+    <h2>Is your card here?</h2>
+    <p>Each card has its own page: the fee, every credit with its fine print, the portal traps, and the cheaper card the audit compares it against.</p>
+    <ul class="card-list">
+        <li><a href="/cards/amex-platinum/">Amex Platinum</a></li>
+        <li><a href="/cards/chase-sapphire-reserve/">Chase Sapphire Reserve</a></li>
+        <li><a href="/cards/capital-one-venture-x/">Capital One Venture X</a></li>
+        <li><a href="/cards/amex-gold/">Amex Gold</a></li>
+        <li><a href="/cards/chase-sapphire-preferred/">Chase Sapphire Preferred</a></li>
+        <li><a href="/cards/citi-strata-elite/">Citi Strata Elite</a></li>
+        <li><a href="/cards/amex-business-platinum/">Amex Business Platinum</a></li>
+        <li><a href="/cards/chase-ink-business-preferred/">Chase Ink Business Preferred</a></li>
+        <li><a href="/cards/amex-delta-reserve/">Delta SkyMiles Reserve</a></li>
+        <li><a href="/cards/amex-hilton-aspire/">Hilton Honors Aspire</a></li>
+        <li><a href="/cards/chase-world-of-hyatt/">World of Hyatt</a></li>
+        <li><a href="/cards/bilt-palladium/">Bilt Palladium</a></li>
+    </ul>
+    <p class="all-cards"><a href="/cards/">All the cards we audit</a></p>
   </div>
 </section>
 
@@ -498,7 +545,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
       <div class="prose">
         <p>Every card app can remind you to use a credit. None of them ask whether you <em>should</em>.</p>
         <p>The classic: a $500 hotel credit that only works through the card's own travel portal. Book through the portal, and the hotel treats it as a third-party prepaid stay — your elite status isn't honored, your night doesn't count toward requalification, your points don't post. The credit pays you $500 and quietly takes back more.</p>
-        <p>Worth My Fee models your loyalty programs alongside your card benefits, so every verdict is net of what a redemption would cost you elsewhere.</p>
+        <p>Worth My Fee models your loyalty programs alongside your card benefits, so every verdict is net of what a redemption would cost you elsewhere. <a href="/credits/portal-hotel/">Every card with a portal-only hotel credit</a>, and which ones honor status.</p>
       </div>
       <div class="trap-card">
         <strong>Trap detected:</strong> Using your card's $500 portal hotel credit would void elite-status recognition on the stays you booked with it — estimated to cost you more in lost upgrades, points, and qualifying nights than the credit returns. <br><br><strong>Verdict:</strong> skip this credit; it's part of why this card fails its fee test.
@@ -525,6 +572,13 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
         <p>Disconnect your cards or delete your account at any time — we revoke bank connections and remove your data. Details in our <a href="privacy.html">privacy policy</a>.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="founder-note">
+  <div class="wrap founder">
+    <p>I hold a stack of premium cards, $3,359 a year in annual fees when I started this, and I couldn't answer a simple question: are they worth it? The card-review sites couldn't answer it either, because they are paid by the issuers whose cards they review.</p>
+    <p class="sig">Eric Carr, founder · <a href="/about/">Why Worth My Fee exists</a></p>
   </div>
 </section>
 
@@ -635,9 +689,10 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
     <p>Run the audit once. Know what every card is actually worth — before the next annual fee posts.</p>
     <a class="btn" href="https://app.worthmyfee.com/">Run it on my cards</a>
     <a class="btn btn-secondary" style="margin-left:0.75rem" href="https://app.worthmyfee.com/#demo-audit">See a live sample audit</a>
-    <p id="guarantee" class="cta-note" style="margin-top:1.25rem;max-width:40rem;margin-left:auto;margin-right:auto">The guarantee, in full: if a paid audit doesn't find at least three times its price in fees you can stop paying or credits you can start capturing, email hello@worthmyfee.com within 30 days and we refund it. No forms, no argument.</p>
+    <p id="guarantee" class="cta-note" style="margin-top:1.25rem;max-width:40rem;margin-left:auto;margin-right:auto">The guarantee: if a paid audit doesn't find at least three times its price in fees you can stop paying or credits your spending already qualifies for, email hello@worthmyfee.com within 30 days of the first charge and we refund it in full. <a href="terms.html#refunds">Full terms</a>.</p>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
