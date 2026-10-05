@@ -81,10 +81,10 @@ table.credits th.amt{text-align:right}
 .chip.rust{color:var(--rust);border-color:var(--rust);background:var(--rust-soft)}
 .chip.amber{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
 .chip.muted{color:var(--muted);border-style:dashed}
-.trap-card{border-left:3px solid var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.trap-card{border-top:3px double var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 .trap-card strong{color:var(--rust)}
 .trap-card small{display:block;color:var(--muted);margin-top:.5rem;font-size:.8rem}
-.note-card{border-left:3px solid var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.note-card{border-top:3px double var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 table.plain{border-collapse:collapse;width:100%;max-width:42rem;font-size:.92rem;margin-top:.6rem}
 table.plain td,table.plain th{text-align:left;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-soft)}
 table.plain th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
@@ -107,7 +107,7 @@ footer{border-top:3px double var(--rule-strong);padding:2.5rem 0 3rem}
 .foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
 .foot-grid a{color:var(--ink-soft)}
 .disclaimer{font-size:.75rem;color:var(--muted);max-width:44rem;margin-top:1.5rem;line-height:1.6}
-.answer{border-left:3px solid var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
+.answer{border-top:3px double var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
 .answer strong{color:var(--green)}
 .faq details{border-bottom:1px solid var(--rule);max-width:42rem}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.85rem 0;font-family:"Newsreader",Georgia,serif;font-size:1.12rem;font-weight:600;line-height:1.3}
@@ -272,12 +272,11 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 <section id="arithmetic">
   <div class="wrap two">
     <div class="prose">
-      <div class="eyebrow">The arithmetic</div>
-      <h2>$2,429 advertised. $895 to cover.</h2>
-      <p>To cover the $895 fee on credits alone you need to reach $895 of the $2,429 advertised, which is 37% of the headline number. That sounds easy. Whether it is depends on how the credits are shaped.</p>
-<p>Of the $2,429: $1,280 arrives in monthly, quarterly or half-year chunks that do not roll over, so those 4 credits need matching spend on schedule, every period, or the money is gone; $600 only pays on bookings made through Amex Travel (Fine Hotels + Resorts / The Hotel Collection); $2,180 pays nothing until you enroll or activate it.</p>
+      <h2>What it takes to cover the $895 fee</h2>
+      <p>To cover the $895 fee on credits alone you need to reach $895 of the $2,429 advertised, which is 37% of the headline number. How hard that is depends on when and where each credit pays.</p>
+<p>Of the $2,429: $1,280 arrives in monthly, quarterly or half-year chunks that do not roll over, so those four credits need matching spend on schedule, every period, or the money is gone; $600 only pays on bookings made through Amex Travel (Fine Hotels + Resorts / The Hotel Collection); $2,180 pays nothing until you enroll or activate it.</p>
 <p>$600 of the advertised value comes from terms the issuer states ambiguously; the catalog marks those unverified and the audit scores them conservatively.</p>
-<p>None of this says what <em>you</em> will reach. That takes your own charges: the audit matches every credit against 12 months of real transactions, counts what actually landed on the card toward the fee, and shows the rest as upside.</p>
+<p>What you actually reach depends on your own charges: the audit matches every credit against 12 months of real transactions, counts what actually landed on the card toward the fee, and shows the rest as upside.</p>
     </div>
     <div class="receipt" aria-label="Fee arithmetic">
 <h3>Amex Business Platinum · the arithmetic</h3>
@@ -295,7 +294,6 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section id="credits">
   <div class="wrap prose">
-    <div class="eyebrow">Every credit</div>
     <h2>The 10 credits on the Amex Business Platinum, with the fine print.</h2>
     <p>Face value per year, how the issuer chunks it, where it actually pays, and what you have to do first. Sorted by value.</p>
     <table class="credits">
@@ -386,17 +384,15 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section id="traps">
   <div class="wrap prose">
-    <div class="eyebrow">Traps and friction</div>
-    <h2>Where the Amex Business Platinum’s credits leak.</h2>
+    <h2>What makes the Amex Business Platinum’s credits hard to use</h2>
     <div class="note-card"><strong>Portal-only, with a luxury-program exception.</strong> <em>Hotel Credit (FHR / The Hotel Collection)</em> books through a prepaid portal, but the issuer states these bookings are transmitted as qualifying rates, so points and elite recognition are generally earned. Reports of real-world honoring are mixed; verify with the chain before relying on it.</div>
-    <ul><li><strong>Twelve chances, not one.</strong> Wireless Credit: $120 a year, but only if the matching charge lands every month. Five orders in a year on a monthly credit is five months of value, not twelve.</li>
-<li><strong>Switched off by default.</strong> Hotel Credit (FHR / The Hotel Collection), Airline Fee Credit, Dell Credit, Adobe Credit, Indeed Credit, Wireless Credit, Hilton Credit and ChatGPT Business Credit pay nothing until enrolled or activated. The audit checks your statement for the issuer’s own credit postings, so an unenrolled credit shows up as exactly that.</li></ul>
+    <ul><li><strong>Monthly credits.</strong> Wireless Credit: $120 a year, but only if the matching charge lands every month. Five orders in a year on a monthly credit pays out for five months.</li>
+<li><strong>Enrollment required.</strong> Hotel Credit (FHR / The Hotel Collection), Airline Fee Credit, Dell Credit, Adobe Credit, Indeed Credit, Wireless Credit, Hilton Credit and ChatGPT Business Credit pay nothing until enrolled or activated. The audit checks your statement for the issuer’s own credit postings, so an unenrolled credit shows up as exactly that.</li></ul>
   </div>
 </section>
 <section id="beyond">
   <div class="wrap prose">
-    <div class="eyebrow">Beyond the credits</div>
-    <h2>What else the fee buys, and how the audit prices it.</h2>
+    <h2>Beyond the credits: status, lounges and points</h2>
     <ul><li><strong>Hilton Honors Gold</strong>, granted by holding the card. Valued from your observed stays at that chain, and never stacked with status you already hold.</li>
 <li><strong>Marriott Bonvoy Gold Elite</strong>, granted by holding the card. Valued from your observed stays at that chain, and never stacked with status you already hold.</li>
 <li><strong>Global Lounge Collection (Centurion + Priority Pass + Delta)</strong>, retail value up to $695 a year. Valued per observed flight day, once across your whole portfolio, credited to the cheapest card that covers it.</li></ul>
@@ -408,16 +404,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </section>
 <section id="downgrade">
   <div class="wrap prose">
-    <div class="eyebrow">Downgrade path</div>
-    <h2>What the audit compares it against.</h2>
+    <h2>The cheaper card it’s compared with</h2>
     <p>A verdict on the Amex Business Platinum is never just keep or cancel. The audit scores the cheaper card in the family on your same year of charges. If it clears its fee, the verdict is <strong>downgrade</strong>; if none does, it is <strong>cancel</strong>, and the report names the best card it rejected.</p>
 <table class="plain"><thead><tr><th>Downgrade target</th><th>Fee</th><th>Credits</th><th>Advertised</th></tr></thead><tbody><tr><td><a href="/cards/amex-business-gold/">American Express Business Gold</a></td><td class="amt">$375</td><td class="amt">4</td><td class="amt">$845</td></tr></tbody></table>
   </div>
 </section>
 <section id="faq" class="faq">
   <div class="wrap prose">
-    <div class="eyebrow">Questions</div>
-    <h2>Amex Business Platinum credits, answered plainly.</h2>
+    <h2>Questions about the Amex Business Platinum’s credits</h2>
     <details><summary>How much are the Amex Business Platinum’s credits worth?</summary><p>$2,429 a year at face value across 10 credits, against a $895 annual fee. Covering the fee on credits alone takes 37% of that. $1,280 arrives in monthly, quarterly or half-year chunks that expire unused. What you reach depends on your own charges; Worth My Fee scores each credit against 12 months of real transactions.</p></details>
 <details><summary>Which Amex Business Platinum credits expire every month?</summary><p>Wireless Credit ($10 a month, $120 a year). Each month’s amount is lost if unused, so the annual figure assumes a matching charge in all twelve months.</p></details>
 <details><summary>Does the Amex Business Platinum’s Hotel Credit (FHR / The Hotel Collection) honor hotel elite status?</summary><p>Generally yes. It books through a prepaid portal, but the issuer states these bookings are transmitted as qualifying rates, so points and elite recognition are usually earned. Reports of real-world honoring are mixed; confirm with the chain before relying on it.</p></details>
@@ -428,8 +422,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </section>
 <section id="related">
   <div class="wrap prose">
-    <div class="eyebrow">Related</div>
-    <h2>Cards and credits to compare it with.</h2>
+    <h2>Related cards and credits</h2>
     <h3>Same family</h3><ul class="related"><li><a href="/cards/amex-business-gold/">American Express Business Gold</a> <small>$375 · 4 credits</small></li><li><a href="/cards/amex-business-green/">American Express Business Green Rewards</a> <small>$95 · 0 credits</small></li></ul>
 <h3>Other American Express cards</h3><ul class="related"><li><a href="/cards/amex-centurion/">American Express Centurion Card</a> <small>$5,000 · 3 credits</small></li><li><a href="/cards/amex-platinum/">American Express Platinum Card</a> <small>$895 · 12 credits</small></li><li><a href="/cards/amex-platinum-schwab/">American Express Platinum Card for Schwab</a> <small>$895 · 13 credits</small></li><li><a href="/cards/amex-platinum-morgan-stanley/">American Express Platinum Card for Morgan Stanley</a> <small>$895 · 12 credits</small></li></ul>
 <h3>This card’s credits by type</h3><ul class="related"><li><a href="/credits/portal-hotel/">Portal hotel credits</a> <small>every card with a portal-only hotel credit</small></li><li><a href="/credits/airline-fee/">Airline incidental fee credits</a> <small>every card with an airline incidental fee credit</small></li><li><a href="/credits/trusted-traveler/">Global Entry, TSA PreCheck and CLEAR credits</a> <small>every card with a Global Entry, TSA PreCheck or CLEAR credit</small></li><li><a href="/credits/business/">Business software and services credits</a> <small>every card with a business software or services credit</small></li><li><a href="/credits/lifestyle/">Lifestyle, wellness and shopping credits</a> <small>every card with a lifestyle, wellness or shopping credit</small></li><li><a href="/credits/hotel/">Hotel credits and free-night awards</a> <small>every card with a direct hotel credit or free-night award</small></li></ul>
@@ -437,8 +430,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </section>
 <section id="sources">
   <div class="wrap prose">
-    <div class="eyebrow">Sources</div>
-    <h2>Where every number on this page comes from.</h2>
+    <h2>Sources</h2>
     <p>Issuer and loyalty-program pages first; commentary only where the issuer’s own page is ambiguous. Each link carries the date we last checked it, and a weekly job diffs these pages against the catalog.</p>
     <h3>Issuer and program pages</h3><ul class="sources"><li><a href="https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-platinum-credit-card-amex/" rel="noopener">Amex — Business Platinum official card page ($895; Adobe $250, Airline Fee $200, ChatGPT $300, CLEAR+ $219, Dell $150 + $1,000, Global Entry $120, Hilton $50/qtr, Hotel $300 semi-annual, Indeed $90/qtr, Wireless $10/mo)</a> <span class="asof">americanexpress.com · checked 2026-08-29</span></li></ul>
     <h3>Commentary</h3><ul class="sources"><li><a href="https://frequentmiler.com/895-business-platinum-card/" rel="noopener">Frequent Miler — $895 Business Platinum refresh</a> <span class="asof">frequentmiler.com · checked 2026-08-29</span></li>

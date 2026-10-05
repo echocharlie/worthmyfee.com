@@ -81,10 +81,10 @@ table.credits th.amt{text-align:right}
 .chip.rust{color:var(--rust);border-color:var(--rust);background:var(--rust-soft)}
 .chip.amber{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
 .chip.muted{color:var(--muted);border-style:dashed}
-.trap-card{border-left:3px solid var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.trap-card{border-top:3px double var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 .trap-card strong{color:var(--rust)}
 .trap-card small{display:block;color:var(--muted);margin-top:.5rem;font-size:.8rem}
-.note-card{border-left:3px solid var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.note-card{border-top:3px double var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 table.plain{border-collapse:collapse;width:100%;max-width:42rem;font-size:.92rem;margin-top:.6rem}
 table.plain td,table.plain th{text-align:left;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-soft)}
 table.plain th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
@@ -107,7 +107,7 @@ footer{border-top:3px double var(--rule-strong);padding:2.5rem 0 3rem}
 .foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
 .foot-grid a{color:var(--ink-soft)}
 .disclaimer{font-size:.75rem;color:var(--muted);max-width:44rem;margin-top:1.5rem;line-height:1.6}
-.answer{border-left:3px solid var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
+.answer{border-top:3px double var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
 .answer strong{color:var(--green)}
 .faq details{border-bottom:1px solid var(--rule);max-width:42rem}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.85rem 0;font-family:"Newsreader",Georgia,serif;font-size:1.12rem;font-weight:600;line-height:1.3}
@@ -256,12 +256,11 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 <section id="arithmetic">
   <div class="wrap two">
     <div class="prose">
-      <div class="eyebrow">The arithmetic</div>
-      <h2>$600 advertised. $495 to cover.</h2>
-      <p>To cover the $495 fee on credits alone you need to reach $495 of the $600 advertised, which is 83% of the headline number. That sounds easy. Whether it is depends on how the credits are shaped.</p>
+      <h2>What it takes to cover the $495 fee</h2>
+      <p>To cover the $495 fee on credits alone you need to reach $495 of the $600 advertised, which is 83% of the headline number. How hard that is depends on when and where each credit pays.</p>
 <p>Of the $600: $400 arrives in monthly, quarterly or half-year chunks that do not roll over, so that credit needs matching spend on schedule, every period, or the money is gone; $400 only pays on bookings made through Bilt Travel; $200 is delivered off the card, as in-app credit, certificates or complimentary subscriptions, which is worth something only if you would have paid for those anyway.</p>
 <p>$600 of the advertised value comes from terms the issuer states ambiguously; the catalog marks those unverified and the audit scores them conservatively.</p>
-<p>None of this says what <em>you</em> will reach. That takes your own charges: the audit matches every credit against 12 months of real transactions, counts what actually landed on the card toward the fee, and shows the rest as upside.</p>
+<p>What you actually reach depends on your own charges: the audit matches every credit against 12 months of real transactions, counts what actually landed on the card toward the fee, and shows the rest as upside.</p>
     </div>
     <div class="receipt" aria-label="Fee arithmetic">
 <h3>Bilt Palladium Card · the arithmetic</h3>
@@ -279,7 +278,6 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section id="credits">
   <div class="wrap prose">
-    <div class="eyebrow">Every credit</div>
     <h2>The two credits on the Bilt Palladium Card, with the fine print.</h2>
     <p>Face value per year, how the issuer chunks it, where it actually pays, and what you have to do first. Sorted by value.</p>
     <table class="credits">
@@ -306,16 +304,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section id="traps">
   <div class="wrap prose">
-    <div class="eyebrow">Traps and friction</div>
-    <h2>Where the Bilt Palladium Card’s credits leak.</h2>
+    <h2>What makes the Bilt Palladium Card’s credits hard to use</h2>
     <div class="trap-card"><strong>Portal hotel bookings void elite-status recognition.</strong> <em>Bilt Travel Hotel Credit</em> ($400 a year) pays only on prepaid bookings through Bilt Travel, which makes the portal, not the hotel, the merchant of record. Major hotel programs treat these as third-party bookings: elite benefits are not honored at check-in (upgrades, breakfast, late checkout), and the stay earns no points. If you hold hotel status, redeeming this credit typically costs more per stay than the credit returns. If you are actively requalifying for status, every stay routed through the portal to capture this credit is a night that doesn’t count — and a shortfall at year-end can cost an entire tier, worth far more than the credit.<small>Program terms: <a href="https://www.marriott.com/loyalty/terms/default.mi" rel="noopener">marriott.com</a>, <a href="https://www.hilton.com/en/hilton-honors/honors-terms/" rel="noopener">hilton.com</a>, <a href="https://www.ihg.com/onerewards/content/us/en/terms-and-conditions/member-tcs" rel="noopener">ihg.com</a>, <a href="https://world.hyatt.com/content/gp/en/rewards/terms.html" rel="noopener">world.hyatt.com</a>.</small></div>
     
   </div>
 </section>
 <section id="beyond">
   <div class="wrap prose">
-    <div class="eyebrow">Beyond the credits</div>
-    <h2>What else the fee buys, and how the audit prices it.</h2>
+    <h2>Beyond the credits: status, lounges and points</h2>
     <ul><li><strong>Priority Pass (authorized users included)</strong>, retail value up to $469 a year. Valued per observed flight day, once across your whole portfolio, credited to the cheapest card that covers it.</li></ul>
     <h3>What it earns</h3>
 <p>Headline rates, with the conservative point value the audit uses. Earning below a no-fee 2% cash-back card is worth nothing extra; only the premium over that counts toward the fee.</p>
@@ -325,16 +321,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </section>
 <section id="downgrade">
   <div class="wrap prose">
-    <div class="eyebrow">Downgrade path</div>
-    <h2>What the audit compares it against.</h2>
+    <h2>The cheaper card it’s compared with</h2>
     <p>A verdict on the Bilt Palladium Card is never just keep or cancel. The audit scores the cheaper card in the family on your same year of charges. If it clears its fee, the verdict is <strong>downgrade</strong>; if none does, it is <strong>cancel</strong>, and the report names the best card it rejected.</p>
 <table class="plain"><thead><tr><th>Downgrade target</th><th>Fee</th><th>Credits</th><th>Advertised</th></tr></thead><tbody><tr><td><a href="/cards/bilt-obsidian/">Bilt Obsidian Card</a></td><td class="amt">$95</td><td class="amt">1</td><td class="amt">$100</td></tr></tbody></table>
   </div>
 </section>
 <section id="faq" class="faq">
   <div class="wrap prose">
-    <div class="eyebrow">Questions</div>
-    <h2>Bilt Palladium Card credits, answered plainly.</h2>
+    <h2>Questions about the Bilt Palladium Card’s credits</h2>
     <details><summary>How much are the Bilt Palladium Card’s credits worth?</summary><p>$600 a year at face value across two credits, against a $495 annual fee. Covering the fee on credits alone takes 83% of that. $400 arrives in monthly, quarterly or half-year chunks that expire unused. What you reach depends on your own charges; Worth My Fee scores each credit against 12 months of real transactions.</p></details>
 <details><summary>Does the Bilt Palladium Card’s Bilt Travel Hotel Credit honor hotel elite status?</summary><p>No. It pays only on prepaid bookings through Bilt Travel, which makes the portal the merchant of record. Marriott, Hilton, Hyatt and IHG treat that as a third-party stay: no elite benefits at check-in, no points, and no qualifying nights toward status. If you hold hotel status, the credit typically costs more per stay than it returns.</p></details>
 <details><summary>What is the downgrade option for the Bilt Palladium Card?</summary><p>The Bilt Obsidian Card ($95 a year). Worth My Fee scores it on your same year of charges: if a cheaper card clears its fee the verdict is downgrade, and if none does the verdict is cancel.</p></details>
@@ -343,16 +337,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </section>
 <section id="related">
   <div class="wrap prose">
-    <div class="eyebrow">Related</div>
-    <h2>Cards and credits to compare it with.</h2>
+    <h2>Related cards and credits</h2>
     <h3>Same family</h3><ul class="related"><li><a href="/cards/bilt-obsidian/">Bilt Obsidian Card</a> <small>$95 · 1 credit</small></li></ul>
 <h3>This card’s credits by type</h3><ul class="related"><li><a href="/credits/anniversary/">Anniversary bonuses</a> <small>every card with an anniversary bonus</small></li><li><a href="/credits/portal-hotel/">Portal hotel credits</a> <small>every card with a portal-only hotel credit</small></li></ul>
   </div>
 </section>
 <section id="sources">
   <div class="wrap prose">
-    <div class="eyebrow">Sources</div>
-    <h2>Where every number on this page comes from.</h2>
+    <h2>Sources</h2>
     <p>Issuer and loyalty-program pages first; commentary only where the issuer’s own page is ambiguous. Each link carries the date we last checked it, and a weekly job diffs these pages against the catalog.</p>
     <h3>Issuer and program pages</h3><ul class="sources"><li><a href="https://www.bilt.com/card" rel="noopener">Bilt — the Bilt credit cards (Blue $0, Obsidian $95, Palladium $495)</a> <span class="asof">bilt.com · checked 2026-09-06</span></li>
 <li><a href="https://www.bilt.com/card/palladium" rel="noopener">Bilt — Palladium Card ($495; $200 Bilt Cash; $400 Bilt Travel hotel credit as $200 semi-annually; Priority Pass)</a> <span class="asof">bilt.com · checked 2026-09-06</span></li></ul>

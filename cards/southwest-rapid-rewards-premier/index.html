@@ -81,10 +81,10 @@ table.credits th.amt{text-align:right}
 .chip.rust{color:var(--rust);border-color:var(--rust);background:var(--rust-soft)}
 .chip.amber{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
 .chip.muted{color:var(--muted);border-style:dashed}
-.trap-card{border-left:3px solid var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.trap-card{border-top:3px double var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 .trap-card strong{color:var(--rust)}
 .trap-card small{display:block;color:var(--muted);margin-top:.5rem;font-size:.8rem}
-.note-card{border-left:3px solid var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.note-card{border-top:3px double var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 table.plain{border-collapse:collapse;width:100%;max-width:42rem;font-size:.92rem;margin-top:.6rem}
 table.plain td,table.plain th{text-align:left;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-soft)}
 table.plain th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
@@ -107,7 +107,7 @@ footer{border-top:3px double var(--rule-strong);padding:2.5rem 0 3rem}
 .foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
 .foot-grid a{color:var(--ink-soft)}
 .disclaimer{font-size:.75rem;color:var(--muted);max-width:44rem;margin-top:1.5rem;line-height:1.6}
-.answer{border-left:3px solid var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
+.answer{border-top:3px double var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
 .answer strong{color:var(--green)}
 .faq details{border-bottom:1px solid var(--rule);max-width:42rem}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.85rem 0;font-family:"Newsreader",Georgia,serif;font-size:1.12rem;font-weight:600;line-height:1.3}
@@ -248,10 +248,9 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 <section id="arithmetic">
   <div class="wrap two">
     <div class="prose">
-      <div class="eyebrow">The arithmetic</div>
-      <h2>$78 advertised. $149 to cover.</h2>
+      <h2>What it takes to cover the $149 fee</h2>
       <p>Even if you reached every one of the one credit, they would cover $78 of the $149 fee. The remaining $71 has to come from status, lounges, perks and the points the card earns, all valued below.</p>
-<p>None of this says what <em>you</em> will reach. That takes your own charges: the audit matches every credit against 12 months of real transactions, counts what actually landed on the card toward the fee, and shows the rest as upside.</p>
+<p>What you actually reach depends on your own charges: the audit matches every credit against 12 months of real transactions, counts what actually landed on the card toward the fee, and shows the rest as upside.</p>
     </div>
     <div class="receipt" aria-label="Fee arithmetic">
 <h3>Chase Southwest Rapid Rewards Premier · the arithmetic</h3>
@@ -265,7 +264,6 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section id="credits">
   <div class="wrap prose">
-    <div class="eyebrow">Every credit</div>
     <h2>The one credit on the Chase Southwest Rapid Rewards Premier, with the fine print.</h2>
     <p>Face value per year, how the issuer chunks it, where it actually pays, and what you have to do first. Sorted by value.</p>
     <table class="credits">
@@ -285,8 +283,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section id="beyond">
   <div class="wrap prose">
-    <div class="eyebrow">Beyond the credits</div>
-    <h2>What else the fee buys, and how the audit prices it.</h2>
+    <h2>Beyond the credits: status, lounges and points</h2>
     <ul><li><strong>Southwest flight perks</strong>: a free checked bag worth $35 each way, for you and up to 8 companions; preferred seating valued at $12 each way. Counted on flights the card can see you take, and worth nothing once you hold A-List status, which includes them.</li>
 <li><strong>Southwest Rapid Rewards A-List status support</strong>: 0 qualifying dollars toward requalification. Worth something only while you are actively chasing that status.</li></ul>
     <h3>What it earns</h3>
@@ -298,16 +295,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </section>
 <section id="downgrade">
   <div class="wrap prose">
-    <div class="eyebrow">Downgrade path</div>
-    <h2>What the audit compares it against.</h2>
+    <h2>The cheaper card it’s compared with</h2>
     <p>A verdict on the Chase Southwest Rapid Rewards Premier is never just keep or cancel. The audit scores the cheaper card in the family on your same year of charges. If it clears its fee, the verdict is <strong>downgrade</strong>; if none does, it is <strong>cancel</strong>, and the report names the best card it rejected.</p>
 <table class="plain"><thead><tr><th>Downgrade target</th><th>Fee</th><th>Credits</th><th>Advertised</th></tr></thead><tbody><tr><td><a href="/cards/southwest-rapid-rewards-plus/">Chase Southwest Rapid Rewards Plus</a></td><td class="amt">$99</td><td class="amt">1</td><td class="amt">$39</td></tr></tbody></table>
   </div>
 </section>
 <section id="faq" class="faq">
   <div class="wrap prose">
-    <div class="eyebrow">Questions</div>
-    <h2>Chase Southwest Rapid Rewards Premier credits, answered plainly.</h2>
+    <h2>Questions about the Chase Southwest Rapid Rewards Premier’s credits</h2>
     <details><summary>How much are the Chase Southwest Rapid Rewards Premier’s credits worth?</summary><p>$78 a year at face value across one credit, against a $149 annual fee. Covering the fee on credits alone takes more than every credit combined. What you reach depends on your own charges; Worth My Fee scores each credit against 12 months of real transactions.</p></details>
 <details><summary>What is the downgrade option for the Chase Southwest Rapid Rewards Premier?</summary><p>The Chase Southwest Rapid Rewards Plus ($99 a year). Worth My Fee scores it on your same year of charges: if a cheaper card clears its fee the verdict is downgrade, and if none does the verdict is cancel.</p></details>
 <details><summary>What does the Chase Southwest Rapid Rewards Premier earn on spending?</summary><p>3× on Southwest Airlines purchases, 2× on grocery stores and restaurants (first $8,000 per anniversary year) and 2× on Lyft (through 2027), and 1× on everything else. Worth My Fee values Southwest Rapid Rewards at 1.3¢ per point, and counts only the premium over a no-fee 2% cash-back card toward the fee.</p></details>
@@ -315,8 +310,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </section>
 <section id="related">
   <div class="wrap prose">
-    <div class="eyebrow">Related</div>
-    <h2>Cards and credits to compare it with.</h2>
+    <h2>Related cards and credits</h2>
     <h3>Same family</h3><ul class="related"><li><a href="/cards/southwest-rapid-rewards-priority/">Chase Southwest Rapid Rewards Priority</a> <small>$229 · 1 credit</small></li><li><a href="/cards/southwest-rapid-rewards-plus/">Chase Southwest Rapid Rewards Plus</a> <small>$99 · 1 credit</small></li></ul>
 <h3>Other Chase cards</h3><ul class="related"><li><a href="/cards/chase-sapphire-reserve/">Chase Sapphire Reserve</a> <small>$795 · 10 credits</small></li><li><a href="/cards/jp-morgan-reserve/">Chase J.P. Morgan Reserve</a> <small>$795 · 10 credits</small></li><li><a href="/cards/chase-sapphire-reserve-business/">Chase Sapphire Reserve for Business</a> <small>$795 · 9 credits</small></li><li><a href="/cards/chase-united-club/">Chase United Club</a> <small>$695 · 7 credits</small></li></ul>
 <h3>This card’s credits by type</h3><ul class="related"><li><a href="/credits/anniversary/">Anniversary bonuses</a> <small>every card with an anniversary bonus</small></li></ul>
@@ -324,8 +318,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </section>
 <section id="sources">
   <div class="wrap prose">
-    <div class="eyebrow">Sources</div>
-    <h2>Where every number on this page comes from.</h2>
+    <h2>Sources</h2>
     <p>Issuer and loyalty-program pages first; commentary only where the issuer’s own page is ambiguous. Each link carries the date we last checked it, and a weekly job diffs these pages against the catalog.</p>
     <h3>Issuer and program pages</h3><ul class="sources"><li><a href="https://creditcards.chase.com/travel-credit-cards/southwest" rel="noopener">Chase — Southwest Rapid Rewards cards compared (fees and anniversary points)</a> <span class="asof">creditcards.chase.com · checked 2026-09-06</span></li>
 <li><a href="https://creditcards.chase.com/travel-credit-cards/southwest/premier" rel="noopener">Chase — Southwest Rapid Rewards Premier official page</a> <span class="asof">creditcards.chase.com · checked 2026-09-06</span></li></ul>
