@@ -3,40 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Robinhood Gold Card review: no annual fee, but Gold costs $50 a year</title>
+<title>Robinhood Gold Card: no annual fee, but Gold costs $50 a year</title>
 <meta name="description" content="The Robinhood Gold Card has no annual fee of its own; the $50 a year is the Robinhood Gold subscription you must keep while the card is open.">
 <link rel="canonical" href="https://worthmyfee.com/cards/robinhood-gold-card/">
 <link rel="icon" type="image/png" href="/logo-512.png">
 <link rel="apple-touch-icon" href="/logo-512.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Worth My Fee">
-<meta property="og:title" content="Robinhood Gold Card review: no annual fee, but Gold costs $50 a year">
+<meta property="og:title" content="Robinhood Gold Card: no annual fee, but Gold costs $50 a year">
 <meta property="og:description" content="The Robinhood Gold Card has no annual fee of its own; the $50 a year is the Robinhood Gold subscription you must keep while the card is open.">
 <meta property="og:image" content="https://worthmyfee.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://worthmyfee.com/cards/robinhood-gold-card/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Robinhood Gold Card review: no annual fee, but Gold costs $50 a year">
+<meta name="twitter:title" content="Robinhood Gold Card: no annual fee, but Gold costs $50 a year">
 <meta name="twitter:description" content="The Robinhood Gold Card has no annual fee of its own; the $50 a year is the Robinhood Gold subscription you must keep while the card is open.">
 <meta name="twitter:image" content="https://worthmyfee.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..600&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
-:root{--paper:#F7F5F0;--paper-raised:#FFFFFF;--ink:#20231F;--ink-soft:#4A4D45;--muted:#75786F;--rule:#D9D5CA;--rule-strong:#B9B5A8;--green:#25604A;--green-deep:#1B4A38;--green-soft:#E3EBE5;--rust:#A63D2A;--rust-soft:#F2E4DF;--amber:#8A5A12;--amber-soft:#F3E9D2}
+:root{--paper:#F7F5F0;--paper-raised:#FFFFFF;--ink:#20231F;--ink-soft:#4A4D45;--muted:#686B62;--rule:#D9D5CA;--rule-strong:#B9B5A8;--green:#25604A;--green-deep:#1B4A38;--green-soft:#E3EBE5;--rust:#A63D2A;--rust-soft:#F2E4DF;--amber:#8A5A12;--amber-soft:#F3E9D2}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"Libre Franklin","Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.65}
 .wrap{max-width:68rem;margin:0 auto;padding:0 1.5rem}
 a{color:var(--green)}
 nav{border-bottom:1px solid var(--rule);background:var(--paper)}
-.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;gap:1rem}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding-block:1.1rem;gap:.6rem 1rem;flex-wrap:wrap}
 .wordmark{font-family:"Newsreader",Georgia,serif;font-weight:700;font-size:1.25rem;color:var(--ink);text-decoration:none;letter-spacing:-0.01em;white-space:nowrap}
 .wordmark .q{color:var(--green)}
-.nav-links{display:flex;gap:1.5rem;font-size:.9rem;flex-wrap:wrap;justify-content:flex-end}
+.nav-links{display:flex;gap:.4rem 1.5rem;font-size:.9rem;flex-wrap:wrap;justify-content:flex-end}
+@media(max-width:640px){.nav-inner{padding-block:.9rem}.nav-links{width:100%;justify-content:flex-start;gap:.35rem 1.1rem}}
 .nav-links a{color:var(--ink-soft);text-decoration:none}
 .nav-links a:hover{color:var(--green)}
-.crumbs{font-size:.82rem;color:var(--muted);margin:1.5rem 0 0}
+.crumbs{font-size:.82rem;color:var(--muted);margin:1.5rem 0 0;border:0;background:none}
+.skip{position:absolute;left:-9999px;top:.5rem;z-index:10;background:var(--ink);color:#fff;padding:.5rem .9rem;border-radius:4px;text-decoration:none}
+.skip:focus{left:.5rem}
 .crumbs a{color:var(--muted)}
 header.card-head{padding:2rem 0 2.5rem;border-bottom:1px solid var(--rule)}
 .eyebrow,.kicker{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem}
@@ -88,6 +91,10 @@ table.plain th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spa
 table.plain td.amt{font-family:"IBM Plex Mono",monospace;white-space:nowrap;color:var(--ink)}
 table.index{width:100%;border-collapse:collapse;font-size:.92rem;margin:.6rem 0 2rem}
 table.index th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;padding:.5rem .6rem .5rem 0;border-bottom:2px solid var(--rule-strong)}
+.byline{font-size:.85rem;color:var(--ink-soft);margin:-.3rem 0 1rem}
+.byline a{color:var(--ink-soft)}
+/* Phones: the five-column index overflowed a 375px screen; drop the two derived columns (credit count, break-even), which each card page states. */
+@media(max-width:560px){table.index th:nth-child(3),table.index td:nth-child(3),table.index th:nth-child(5),table.index td:nth-child(5){display:none}}
 table.index td{padding:.55rem .6rem .55rem 0;border-bottom:1px solid var(--rule);color:var(--ink-soft);vertical-align:top}
 table.index td.amt,table.index th.amt{font-family:"IBM Plex Mono",monospace;white-space:nowrap;text-align:right}
 table.index td a{font-weight:600}
@@ -156,9 +163,13 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
    "@type": "WebPage",
    "@id": "https://worthmyfee.com/cards/robinhood-gold-card/",
    "url": "https://worthmyfee.com/cards/robinhood-gold-card/",
-   "name": "Robinhood Gold Card review: no annual fee, but Gold costs $50 a year",
+   "name": "Robinhood Gold Card: no annual fee, but Gold costs $50 a year",
    "description": "The Robinhood Gold Card has no annual fee of its own; the $50 a year is the Robinhood Gold subscription you must keep while the card is open.",
    "dateModified": "2026-09-18",
+   "lastReviewed": "2026-09-18",
+   "reviewedBy": {
+    "@id": "https://worthmyfee.com/about/#person"
+   },
    "isPartOf": {
     "@id": "https://worthmyfee.com/#website"
    },
@@ -194,7 +205,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
      "name": "What does the Robinhood Gold Card earn on spending?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "5× on flights & hotels via robinhood travel portal, and 3× on everything else. Worth My Fee values Robinhood cash back at 1.0¢ per point, and counts only the premium over a no-fee 2% cash-back card toward the fee."
+      "text": "5× on flights & hotels via Robinhood Travel Portal, and 3× on everything else. Worth My Fee values Robinhood cash back at 1.0¢ per point, and counts only the premium over a no-fee 2% cash-back card toward the fee."
      }
     }
    ]
@@ -204,7 +215,8 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </script>
 </head>
 <body>
-<nav>
+<a class="skip" href="#main">Skip to content</a>
+<nav aria-label="Main">
   <div class="wrap nav-inner">
     <a class="wordmark" href="/">Worth&nbsp;My&nbsp;Fee<span class="q">?</span></a>
     <div class="nav-links">
@@ -216,11 +228,13 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
     </div>
   </div>
 </nav>
+<main id="main">
 
 <header class="card-head">
   <div class="wrap">
-    <p class="crumbs"><a href="/cards/">Cards</a> › Robinhood</p>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/cards/">Cards</a> <span aria-hidden="true">›</span> Robinhood</nav>
     <div class="kicker">Robinhood · personal card · terms checked 2026-09-18</div>
+    <p class="byline">Catalog maintained by <a href="/about/">Eric Carr</a>, founder of Worth My Fee. Paid by users, never by issuers.</p>
     <h1>Is the Robinhood Gold Card worth it? No annual fee, but Robinhood Gold (<em>$50</em> a year) is required.</h1>
     <p class="answer"><strong>Short answer:</strong> the Robinhood Gold Card has no annual fee of its own; the $50 a year is the Robinhood Gold subscription you must keep while the card is open. The card has no statement credits to reach, so the $50 Robinhood Gold subscription it requires has to be earned by perks and by the points it earns. Whether that clears $50 depends entirely on how often you use them.</p>
     <p class="lede">A personal card with no fee of its own, held behind a $50-a-year Robinhood Gold subscription, and no statement credits to audit. Here is what the subscription buys instead, and how Worth My Fee prices each piece against your own charges.</p>
@@ -274,7 +288,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
     <h2>Robinhood Gold Card credits, answered plainly.</h2>
     <details><summary>Does the Robinhood Gold Card have an annual fee?</summary><p>No, the Robinhood Gold Card has no annual fee of its own. It requires a Robinhood Gold subscription at $50 a year, which can only be cancelled after the card is closed, so that subscription is the real cost of holding the card.</p></details>
 <details><summary>What is the downgrade option for the Robinhood Gold Card?</summary><p>The catalog lists no cheaper card in this family that the issuer lets you move to, so a failing audit means cancel rather than downgrade.</p></details>
-<details><summary>What does the Robinhood Gold Card earn on spending?</summary><p>5× on flights &amp; hotels via robinhood travel portal, and 3× on everything else. Worth My Fee values Robinhood cash back at 1.0¢ per point, and counts only the premium over a no-fee 2% cash-back card toward the fee.</p></details>
+<details><summary>What does the Robinhood Gold Card earn on spending?</summary><p>5× on flights &amp; hotels via Robinhood Travel Portal, and 3× on everything else. Worth My Fee values Robinhood cash back at 1.0¢ per point, and counts only the premium over a no-fee 2% cash-back card toward the fee.</p></details>
   </div>
 </section>
 <section id="related">
@@ -305,6 +319,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <div class="foot-grid">
