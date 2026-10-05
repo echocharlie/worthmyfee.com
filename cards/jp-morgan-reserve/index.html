@@ -81,10 +81,10 @@ table.credits th.amt{text-align:right}
 .chip.rust{color:var(--rust);border-color:var(--rust);background:var(--rust-soft)}
 .chip.amber{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
 .chip.muted{color:var(--muted);border-style:dashed}
-.trap-card{border-left:3px solid var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.trap-card{border-top:3px double var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 .trap-card strong{color:var(--rust)}
 .trap-card small{display:block;color:var(--muted);margin-top:.5rem;font-size:.8rem}
-.note-card{border-left:3px solid var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.note-card{border-top:3px double var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 table.plain{border-collapse:collapse;width:100%;max-width:42rem;font-size:.92rem;margin-top:.6rem}
 table.plain td,table.plain th{text-align:left;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-soft)}
 table.plain th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
@@ -107,7 +107,7 @@ footer{border-top:3px double var(--rule-strong);padding:2.5rem 0 3rem}
 .foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
 .foot-grid a{color:var(--ink-soft)}
 .disclaimer{font-size:.75rem;color:var(--muted);max-width:44rem;margin-top:1.5rem;line-height:1.6}
-.answer{border-left:3px solid var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
+.answer{border-top:3px double var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
 .answer strong{color:var(--green)}
 .faq details{border-bottom:1px solid var(--rule);max-width:42rem}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.85rem 0;font-family:"Newsreader",Georgia,serif;font-size:1.12rem;font-weight:600;line-height:1.3}
@@ -272,12 +272,11 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 <section id="arithmetic">
   <div class="wrap two">
     <div class="prose">
-      <div class="eyebrow">The arithmetic</div>
-      <h2>$2,508 advertised. $795 to cover.</h2>
-      <p>To cover the $795 fee on credits alone you need to reach $795 of the $2,508 advertised, which is 32% of the headline number. That sounds easy. Whether it is depends on how the credits are shaped.</p>
-<p>Of the $2,508: $1,428 arrives in monthly, quarterly or half-year chunks that do not roll over, so those 6 credits need matching spend on schedule, every period, or the money is gone; $750 only pays on bookings made through The Edit by Chase Travel and Chase Travel; $1,008 pays nothing until you enroll or activate it; $708 is delivered off the card, as in-app credit, certificates or complimentary subscriptions, which is worth something only if you would have paid for those anyway; $1,378 is promotional and has an end date.</p>
+      <h2>What it takes to cover the $795 fee</h2>
+      <p>To cover the $795 fee on credits alone you need to reach $795 of the $2,508 advertised, which is 32% of the headline number. How hard that is depends on when and where each credit pays.</p>
+<p>Of the $2,508: $1,428 arrives in monthly, quarterly or half-year chunks that do not roll over, so those six credits need matching spend on schedule, every period, or the money is gone; $750 only pays on bookings made through The Edit by Chase Travel and Chase Travel; $1,008 pays nothing until you enroll or activate it; $708 is delivered off the card, as in-app credit, certificates or complimentary subscriptions, which is worth something only if you would have paid for those anyway; $1,378 is promotional and has an end date.</p>
 <p>$2,508 of the advertised value comes from terms the issuer states ambiguously; the catalog marks those unverified and the audit scores them conservatively.</p>
-<p>None of this says what <em>you</em> will reach. That takes your own charges: the audit matches every credit against 12 months of real transactions, counts what actually landed on the card toward the fee, and shows the rest as upside.</p>
+<p>What you actually reach depends on your own charges: the audit matches every credit against 12 months of real transactions, counts what actually landed on the card toward the fee, and shows the rest as upside.</p>
     </div>
     <div class="receipt" aria-label="Fee arithmetic">
 <h3>Chase J.P. Morgan Reserve · the arithmetic</h3>
@@ -297,7 +296,6 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section id="credits">
   <div class="wrap prose">
-    <div class="eyebrow">Every credit</div>
     <h2>The 10 credits on the Chase J.P. Morgan Reserve, with the fine print.</h2>
     <p>Face value per year, how the issuer chunks it, where it actually pays, and what you have to do first. Sorted by value.</p>
     <table class="credits">
@@ -311,7 +309,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 <td data-h="Flags"><span class="chip">portal, status honored</span> <span class="chip muted">unverified</span></td>
 </tr>
 <tr>
-<td class="name">$300 Annual Travel Credit<small>Applies automatically to any travel-coded charge (airlines, hotels, transit, tolls, parking). No portal requirement. Resets on the cardmember anniversary year, not the calendar year — a different clock than every other CSR credit.</small></td>
+<td class="name">$300 Annual Travel Credit<small>Applies automatically to any travel-coded charge (airlines, hotels, transit, tolls, parking). No portal requirement. Resets on the cardmember anniversary year, not the calendar year: a different clock than every other CSR credit.</small></td>
 <td class="amt" data-h="Per year">$300</td>
 <td data-h="Paid out as">$300 a year, resets on your card anniversary</td>
 <td data-h="Works at">Any qualifying purchase</td>
@@ -335,7 +333,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 <td data-h="Flags"><span class="chip">ends 2027-12-31</span> <span class="chip muted">unverified</span></td>
 </tr>
 <tr>
-<td class="name">DoorDash Monthly Promos<small>Requires active complimentary DashPass enrollment. $5 restaurant promo plus two $10 non-restaurant (grocery/retail) promos per month, each on a separate order — in-app checkout promos, not statement credits. Realizing the full $300 requires three distinct DoorDash orders every month.</small></td>
+<td class="name">DoorDash Monthly Promos<small>Requires active complimentary DashPass enrollment. $5 restaurant promo plus two $10 non-restaurant (grocery/retail) promos per month, each on a separate order: in-app checkout promos, not statement credits. Realizing the full $300 requires three distinct DoorDash orders every month.</small></td>
 <td class="amt" data-h="Per year">$300</td>
 <td data-h="Paid out as">$25 a month in 3 uses of $8.33; unused amounts are lost</td>
 <td data-h="Works at">DoorDash</td>
@@ -343,7 +341,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 <td data-h="Flags"><span class="chip">use it monthly</span> <span class="chip">ends 2027-12-31</span> <span class="chip muted">unverified</span></td>
 </tr>
 <tr>
-<td class="name">Apple TV+ &amp; Apple Music Subscriptions<small>Complimentary subscriptions, not statement credits — realized value is zero unless the user would otherwise pay for these services. Annualized value estimates conflict across sources ($250–$288 depending on Apple pricing); $288 used here. Requires per-service enrollment via Chase.</small></td>
+<td class="name">Apple TV+ &amp; Apple Music Subscriptions<small>Complimentary subscriptions, not statement credits: realized value is zero unless the user would otherwise pay for these services. Annualized value estimates conflict across sources ($250–$288 depending on Apple pricing); $288 used here. Requires per-service enrollment via Chase.</small></td>
 <td class="amt" data-h="Per year">$288</td>
 <td data-h="Paid out as">$24 a month; unused amounts are lost</td>
 <td data-h="Works at">Apple TV+, Apple Music</td>
@@ -351,7 +349,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 <td data-h="Flags"><span class="chip">use it monthly</span> <span class="chip">ends 2027-06-22</span> <span class="chip muted">unverified</span></td>
 </tr>
 <tr>
-<td class="name">$250 Select Hotels Credit (2026)<small>One-time 2026 benefit (not confirmed to recur): prepaid 2+ night Chase Travel bookings at select brands — IHG, Montage, Pendry, Omni, Virgin Hotels, Minor, Pan Pacific. Chase states these bookings still earn hotel points and stay credit.</small></td>
+<td class="name">$250 Select Hotels Credit (2026)<small>One-time 2026 benefit (not confirmed to recur): prepaid 2+ night Chase Travel bookings at select brands: IHG, Montage, Pendry, Omni, Virgin Hotels, Minor, Pan Pacific. Chase states these bookings still earn hotel points and stay credit.</small></td>
 <td class="amt" data-h="Per year">$250</td>
 <td data-h="Paid out as">$250 a year, resets on the calendar</td>
 <td data-h="Works at">Chase Travel only (prepaid hotels); single charge of $250 or more; 2-night minimum</td>
@@ -388,19 +386,17 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section id="traps">
   <div class="wrap prose">
-    <div class="eyebrow">Traps and friction</div>
-    <h2>Where the Chase J.P. Morgan Reserve’s credits leak.</h2>
+    <h2>What makes the Chase J.P. Morgan Reserve’s credits hard to use</h2>
     <div class="note-card"><strong>Portal-only, with a luxury-program exception.</strong> <em>The Edit Hotel Credit</em> and <em>$250 Select Hotels Credit (2026)</em> books through a prepaid portal, but the issuer states these bookings are transmitted as qualifying rates, so points and elite recognition are generally earned. Reports of real-world honoring are mixed; verify with the chain before relying on it.</div>
-    <ul><li><strong>Twelve chances, not one.</strong> DoorDash Monthly Promos, Lyft In-App Credit, Peloton Membership Credit and Apple TV+ &amp; Apple Music Subscriptions: $828 a year, but only if the matching charge lands every month. Five orders in a year on a monthly credit is five months of value, not twelve.</li>
-<li><strong>Switched off by default.</strong> StubHub / viagogo Credit, DoorDash Monthly Promos, Lyft In-App Credit and Apple TV+ &amp; Apple Music Subscriptions pay nothing until enrolled or activated. The audit checks your statement for the issuer’s own credit postings, so an unenrolled credit shows up as exactly that.</li>
+    <ul><li><strong>Monthly credits.</strong> DoorDash Monthly Promos, Lyft In-App Credit, Peloton Membership Credit and Apple TV+ &amp; Apple Music Subscriptions: $828 a year, but only if the matching charge lands every month. Five orders in a year on a monthly credit pays out for five months.</li>
+<li><strong>Enrollment required.</strong> StubHub / viagogo Credit, DoorDash Monthly Promos, Lyft In-App Credit and Apple TV+ &amp; Apple Music Subscriptions pay nothing until enrolled or activated. The audit checks your statement for the issuer’s own credit postings, so an unenrolled credit shows up as exactly that.</li>
 <li><strong>Subscriptions count only if you would pay.</strong> Apple TV+ &amp; Apple Music Subscriptions is complimentary memberships, not statement credits. Realized value is zero unless you would otherwise have bought them.</li>
 <li><strong>Promotional.</strong> $250 Select Hotels Credit (2026) (ends 2026-12-31), Apple TV+ &amp; Apple Music Subscriptions (ends 2027-06-22), Lyft In-App Credit (ends 2027-09-30), StubHub / viagogo Credit (ends 2027-12-31), DoorDash Monthly Promos (ends 2027-12-31) and Peloton Membership Credit (ends 2027-12-31). The issuer has not promised these recur; the audit scores them while they run.</li></ul>
   </div>
 </section>
 <section id="beyond">
   <div class="wrap prose">
-    <div class="eyebrow">Beyond the credits</div>
-    <h2>What else the fee buys, and how the audit prices it.</h2>
+    <h2>Beyond the credits: status, lounges and points</h2>
     <ul><li><strong>IHG One Rewards Platinum Elite</strong>, granted by holding the card. Valued from your observed stays at that chain, and never stacked with status you already hold.</li>
 <li><strong>United Club membership + Priority Pass + Chase Sapphire Lounges</strong>, retail value up to $750 a year. Valued per observed flight day, once across your whole portfolio, credited to the cheapest card that covers it.</li></ul>
     <h3>What it earns</h3>
@@ -414,16 +410,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </section>
 <section id="downgrade">
   <div class="wrap prose">
-    <div class="eyebrow">Downgrade path</div>
-    <h2>What the audit compares it against.</h2>
+    <h2>The cheaper card it’s compared with</h2>
     <p>A verdict on the Chase J.P. Morgan Reserve is never just keep or cancel. The audit scores the cheaper card in the family on your same year of charges. If it clears its fee, the verdict is <strong>downgrade</strong>; if none does, it is <strong>cancel</strong>, and the report names the best card it rejected.</p>
 <table class="plain"><thead><tr><th>Downgrade target</th><th>Fee</th><th>Credits</th><th>Advertised</th></tr></thead><tbody><tr><td><a href="/cards/chase-sapphire-preferred/">Chase Sapphire Preferred</a></td><td class="amt">$95</td><td class="amt">4</td><td class="amt">$370</td></tr></tbody></table>
   </div>
 </section>
 <section id="faq" class="faq">
   <div class="wrap prose">
-    <div class="eyebrow">Questions</div>
-    <h2>Chase J.P. Morgan Reserve credits, answered plainly.</h2>
+    <h2>Questions about the Chase J.P. Morgan Reserve’s credits</h2>
     <details><summary>How much are the Chase J.P. Morgan Reserve’s credits worth?</summary><p>$2,508 a year at face value across 10 credits, against a $795 annual fee. Covering the fee on credits alone takes 32% of that. $1,428 arrives in monthly, quarterly or half-year chunks that expire unused. What you reach depends on your own charges; Worth My Fee scores each credit against 12 months of real transactions.</p></details>
 <details><summary>Which Chase J.P. Morgan Reserve credits expire every month?</summary><p>DoorDash Monthly Promos ($25 a month, $300 a year), Lyft In-App Credit ($10 a month, $120 a year), Peloton Membership Credit ($10 a month, $120 a year) and Apple TV+ &amp; Apple Music Subscriptions ($24 a month, $288 a year). Each month’s amount is lost if unused, so the annual figure assumes a matching charge in all twelve months.</p></details>
 <details><summary>Does the Chase J.P. Morgan Reserve’s The Edit Hotel Credit honor hotel elite status?</summary><p>Generally yes. It books through a prepaid portal, but the issuer states these bookings are transmitted as qualifying rates, so points and elite recognition are usually earned. Reports of real-world honoring are mixed; confirm with the chain before relying on it.</p></details>
@@ -434,8 +428,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </section>
 <section id="related">
   <div class="wrap prose">
-    <div class="eyebrow">Related</div>
-    <h2>Cards and credits to compare it with.</h2>
+    <h2>Related cards and credits</h2>
     <h3>Same family</h3><ul class="related"><li><a href="/cards/chase-sapphire-reserve/">Chase Sapphire Reserve</a> <small>$795 · 10 credits</small></li><li><a href="/cards/chase-sapphire-preferred/">Chase Sapphire Preferred</a> <small>$95 · 4 credits</small></li></ul>
 <h3>Other Chase cards</h3><ul class="related"><li><a href="/cards/chase-sapphire-reserve-business/">Chase Sapphire Reserve for Business</a> <small>$795 · 9 credits</small></li><li><a href="/cards/chase-united-club/">Chase United Club</a> <small>$695 · 7 credits</small></li><li><a href="/cards/chase-ritz-carlton/">Chase Ritz-Carlton Credit Card</a> <small>$450 · 4 credits</small></li><li><a href="/cards/chase-united-quest/">Chase United Quest</a> <small>$350 · 9 credits</small></li></ul>
 <h3>This card’s credits by type</h3><ul class="related"><li><a href="/credits/travel/">General travel credits</a> <small>every card with a general travel credit</small></li><li><a href="/credits/portal-hotel/">Portal hotel credits</a> <small>every card with a portal-only hotel credit</small></li><li><a href="/credits/dining/">Dining and delivery credits</a> <small>every card with a dining or delivery credit</small></li><li><a href="/credits/streaming/">Streaming and entertainment credits</a> <small>every card with a streaming or entertainment credit</small></li><li><a href="/credits/rideshare/">Rideshare and chauffeur credits</a> <small>every card with a rideshare credit</small></li><li><a href="/credits/trusted-traveler/">Global Entry, TSA PreCheck and CLEAR credits</a> <small>every card with a Global Entry, TSA PreCheck or CLEAR credit</small></li></ul>
@@ -443,8 +436,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </section>
 <section id="sources">
   <div class="wrap prose">
-    <div class="eyebrow">Sources</div>
-    <h2>Where every number on this page comes from.</h2>
+    <h2>Sources</h2>
     <p>Issuer and loyalty-program pages first; commentary only where the issuer’s own page is ambiguous. Each link carries the date we last checked it, and a weekly job diffs these pages against the catalog.</p>
     <h3>Issuer and program pages</h3><ul class="sources"><li><a href="https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve" rel="noopener">Chase Sapphire Reserve — official benefits page (the J.P. Morgan Reserve carries the same credits)</a> <span class="asof">creditcards.chase.com · checked 2026-09-06</span></li>
 <li><a href="https://www.chase.com/digital/resources/terms-of-use/csr-doordash" rel="noopener">Chase — CSR DoorDash benefit terms</a> <span class="asof">chase.com · checked 2026-08-28</span></li>

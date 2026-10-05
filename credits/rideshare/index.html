@@ -81,10 +81,10 @@ table.credits th.amt{text-align:right}
 .chip.rust{color:var(--rust);border-color:var(--rust);background:var(--rust-soft)}
 .chip.amber{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
 .chip.muted{color:var(--muted);border-style:dashed}
-.trap-card{border-left:3px solid var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.trap-card{border-top:3px double var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 .trap-card strong{color:var(--rust)}
 .trap-card small{display:block;color:var(--muted);margin-top:.5rem;font-size:.8rem}
-.note-card{border-left:3px solid var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.note-card{border-top:3px double var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 table.plain{border-collapse:collapse;width:100%;max-width:42rem;font-size:.92rem;margin-top:.6rem}
 table.plain td,table.plain th{text-align:left;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-soft)}
 table.plain th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
@@ -107,7 +107,7 @@ footer{border-top:3px double var(--rule-strong);padding:2.5rem 0 3rem}
 .foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
 .foot-grid a{color:var(--ink-soft)}
 .disclaimer{font-size:.75rem;color:var(--muted);max-width:44rem;margin-top:1.5rem;line-height:1.6}
-.answer{border-left:3px solid var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
+.answer{border-top:3px double var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
 .answer strong{color:var(--green)}
 .faq details{border-bottom:1px solid var(--rule);max-width:42rem}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.85rem 0;font-family:"Newsreader",Georgia,serif;font-size:1.12rem;font-weight:600;line-height:1.3}
@@ -209,7 +209,6 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section>
   <div class="wrap prose">
-    <div class="eyebrow">The credits</div>
     <h2>Every card with one, sorted by face value.</h2>
     <table class="credits">
 <thead><tr><th>Card</th><th>Credit</th><th class="amt">Per year</th><th>Paid out as</th><th>Flags</th></tr></thead>
@@ -222,7 +221,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-platinum/">American Express Platinum Card</a><small>$895 annual fee</small></td>
-<td data-h="Credit">Uber Cash<br><small style="color:var(--muted)">$15/month Jan–Nov plus $35 in December; delivered as in-app Uber Cash (US only), expiring at month-end — not a statement credit. Requires adding the card to the Uber account.</small></td>
+<td data-h="Credit">Uber Cash<br><small style="color:var(--muted)">$15/month Jan–Nov plus $35 in December; delivered as in-app Uber Cash (US only), expiring at month-end, not a statement credit. Requires adding the card to the Uber account.</small></td>
 <td class="amt" data-h="Per year">$200</td>
 <td data-h="Paid out as">$15 a month; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span></td>
@@ -236,7 +235,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-platinum-schwab/">American Express Platinum Card for Schwab</a><small>$895 annual fee</small></td>
-<td data-h="Credit">Uber Cash<br><small style="color:var(--muted)">Schwab Platinum: the same term as the Platinum Card per Amex’s Schwab terms page. $15/month Jan–Nov plus $35 in December; delivered as in-app Uber Cash (US only), expiring at month-end — not a statement credit. Requires adding the card to the Uber account.</small></td>
+<td data-h="Credit">Uber Cash<br><small style="color:var(--muted)">Schwab Platinum: the same term as the Platinum Card per Amex’s Schwab terms page. $15/month Jan–Nov plus $35 in December; delivered as in-app Uber Cash (US only), expiring at month-end, not a statement credit. Requires adding the card to the Uber account.</small></td>
 <td class="amt" data-h="Per year">$200</td>
 <td data-h="Paid out as">$15 a month; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span> <span class="chip muted">unverified</span></td>
@@ -250,7 +249,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/citi-aadvantage-executive/">Citi / AAdvantage Executive</a><small>$695 annual fee</small></td>
-<td data-h="Credit">Lyft Credit<br><small style="color:var(--muted)">$15/month AFTER taking 3 eligible Lyft rides in that calendar month (up from $10 pre-refresh) — a per-month usage gate, so full realization needs 36 rides/year. Card must be linked in the Lyft app.</small></td>
+<td data-h="Credit">Lyft Credit<br><small style="color:var(--muted)">$15/month AFTER taking 3 eligible Lyft rides in that calendar month (up from $10 pre-refresh): a per-month usage gate, so full realization needs 36 rides/year. Card must be linked in the Lyft app.</small></td>
 <td class="amt" data-h="Per year">$180</td>
 <td data-h="Paid out as">$15 a month; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span></td>
@@ -278,7 +277,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-delta-reserve-business/">American Express Delta SkyMiles Reserve Business</a><small>$650 annual fee</small></td>
-<td data-h="Credit">Rideshare Credit<br><small style="color:var(--muted)">US rides only; excludes delivery (Uber Eats), bikes, and scooters. Enrollment required and can take 24h to activate. Revel appears in some provider lists but not 2026 updates — omitted.</small></td>
+<td data-h="Credit">Rideshare Credit<br><small style="color:var(--muted)">US rides only; excludes delivery (Uber Eats), bikes, and scooters. Enrollment required and can take 24h to activate. Revel appears in some provider lists but not 2026 updates: omitted.</small></td>
 <td class="amt" data-h="Per year">$120</td>
 <td data-h="Paid out as">$10 a month; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span></td>
@@ -292,14 +291,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-gold/">American Express Gold Card</a><small>$325 annual fee</small></td>
-<td data-h="Credit">Uber Cash<br><small style="color:var(--muted)">$10/month delivered as in-app Uber Cash (US only), usable on rides or Uber Eats; expires at month-end — not a statement credit. Requires the Gold card to be added to the Uber account.</small></td>
+<td data-h="Credit">Uber Cash<br><small style="color:var(--muted)">$10/month delivered as in-app Uber Cash (US only), usable on rides or Uber Eats; expires at month-end, not a statement credit. Requires the Gold card to be added to the Uber account.</small></td>
 <td class="amt" data-h="Per year">$120</td>
 <td data-h="Paid out as">$10 a month; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-delta-gold/">American Express Delta SkyMiles Gold</a><small>$150 annual fee</small></td>
-<td data-h="Credit">Rideshare Credit<br><small style="color:var(--muted)">Added to the Gold cards June 2026, but only AFTER THE FIRST CARD RENEWAL — year-one holders get nothing. US rides only (Uber, Lyft, Curb, Alto); excludes delivery, bikes, scooters. Enrollment required, can take 24h.</small></td>
+<td data-h="Credit">Rideshare Credit<br><small style="color:var(--muted)">Added to the Gold cards June 2026, but only AFTER THE FIRST CARD RENEWAL: year-one holders get nothing. US rides only (Uber, Lyft, Curb, Alto); excludes delivery, bikes, scooters. Enrollment required, can take 24h.</small></td>
 <td class="amt" data-h="Per year">$120</td>
 <td data-h="Paid out as">$10 a month; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span></td>
@@ -313,7 +312,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-delta-gold-business/">American Express Delta SkyMiles Gold Business</a><small>$150 annual fee</small></td>
-<td data-h="Credit">Rideshare Credit<br><small style="color:var(--muted)">Added to the Gold cards June 2026, but only AFTER THE FIRST CARD RENEWAL — year-one holders get nothing. US rides only (Uber, Lyft, Curb, Alto); excludes delivery, bikes, scooters. Enrollment required, can take 24h.</small></td>
+<td data-h="Credit">Rideshare Credit<br><small style="color:var(--muted)">Added to the Gold cards June 2026, but only AFTER THE FIRST CARD RENEWAL: year-one holders get nothing. US rides only (Uber, Lyft, Curb, Alto); excludes delivery, bikes, scooters. Enrollment required, can take 24h.</small></td>
 <td class="amt" data-h="Per year">$120</td>
 <td data-h="Paid out as">$10 a month; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span></td>
@@ -362,7 +361,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-gold/">American Express Gold Card</a><small>$325 annual fee</small></td>
-<td data-h="Credit">Uber One Membership Credit (60th anniversary, one-time)<br><small style="color:var(--muted)">One-time credit of up to $96 against an ANNUAL Uber One membership paid with the card — enrollment via Amex Offers and purchase must both happen by 2026-10-30. A 60th-anniversary promotion, not a recurring benefit.</small></td>
+<td data-h="Credit">Uber One Membership Credit (60th anniversary, one-time)<br><small style="color:var(--muted)">One-time credit of up to $96 against an ANNUAL Uber One membership paid with the card; enrollment via Amex Offers and purchase must both happen by 2026-10-30. A 60th-anniversary promotion, not a recurring benefit.</small></td>
 <td class="amt" data-h="Per year">$96</td>
 <td data-h="Paid out as">$96, one time</td>
 <td data-h="Flags"><span class="chip">ends 2026-10-30</span></td>
@@ -380,7 +379,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section>
   <div class="wrap prose">
-    <div class="eyebrow">Other credit types</div>
+    <h2>Other credit types</h2>
     <ul class="related"><li><a href="/credits/portal-hotel/">Portal hotel credits</a> <small>26 credits</small></li><li><a href="/credits/trusted-traveler/">Global Entry, TSA PreCheck and CLEAR credits</a> <small>39 credits</small></li><li><a href="/credits/airline-fee/">Airline incidental fee credits</a> <small>8 credits</small></li><li><a href="/credits/companion/">Companion certificates and fares</a> <small>6 credits</small></li><li><a href="/credits/hotel/">Hotel credits and free-night awards</a> <small>15 credits</small></li><li><a href="/credits/anniversary/">Anniversary bonuses</a> <small>14 credits</small></li><li><a href="/credits/business/">Business software and services credits</a> <small>10 credits</small></li><li><a href="/credits/streaming/">Streaming and entertainment credits</a> <small>12 credits</small></li><li><a href="/credits/dining/">Dining and delivery credits</a> <small>25 credits</small></li><li><a href="/credits/airline/">Airline and flight credits</a> <small>16 credits</small></li><li><a href="/credits/travel/">General travel credits</a> <small>12 credits</small></li><li><a href="/credits/lifestyle/">Lifestyle, wellness and shopping credits</a> <small>21 credits</small></li></ul>
   </div>
 </section>

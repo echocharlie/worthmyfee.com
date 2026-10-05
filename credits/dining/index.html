@@ -81,10 +81,10 @@ table.credits th.amt{text-align:right}
 .chip.rust{color:var(--rust);border-color:var(--rust);background:var(--rust-soft)}
 .chip.amber{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
 .chip.muted{color:var(--muted);border-style:dashed}
-.trap-card{border-left:3px solid var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.trap-card{border-top:3px double var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 .trap-card strong{color:var(--rust)}
 .trap-card small{display:block;color:var(--muted);margin-top:.5rem;font-size:.8rem}
-.note-card{border-left:3px solid var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.note-card{border-top:3px double var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 table.plain{border-collapse:collapse;width:100%;max-width:42rem;font-size:.92rem;margin-top:.6rem}
 table.plain td,table.plain th{text-align:left;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-soft)}
 table.plain th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
@@ -107,7 +107,7 @@ footer{border-top:3px double var(--rule-strong);padding:2.5rem 0 3rem}
 .foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
 .foot-grid a{color:var(--ink-soft)}
 .disclaimer{font-size:.75rem;color:var(--muted);max-width:44rem;margin-top:1.5rem;line-height:1.6}
-.answer{border-left:3px solid var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
+.answer{border-top:3px double var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
 .answer strong{color:var(--green)}
 .faq details{border-bottom:1px solid var(--rule);max-width:42rem}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.85rem 0;font-family:"Newsreader",Georgia,serif;font-size:1.12rem;font-weight:600;line-height:1.3}
@@ -209,13 +209,12 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section>
   <div class="wrap prose">
-    <div class="eyebrow">The credits</div>
     <h2>Every card with one, sorted by face value.</h2>
     <table class="credits">
 <thead><tr><th>Card</th><th>Credit</th><th class="amt">Per year</th><th>Paid out as</th><th>Flags</th></tr></thead>
 <tbody><tr>
 <td class="name"><a href="/cards/amex-centurion/">American Express Centurion Card</a><small>$5,000 annual fee</small></td>
-<td data-h="Credit">Resy Dining Credit<br><small style="color:var(--muted)">Up to $250/quarter at 10,000+ US Resy-listed restaurants, select Resy event tickets, and Centurion New York dining — paying with the card at a qualifying restaurant suffices; a Resy booking is not required. Replaced the Saks credit effective 2026-07-01 after the Saks bankruptcy. Unused quarters are forfeited.</small></td>
+<td data-h="Credit">Resy Dining Credit<br><small style="color:var(--muted)">Up to $250/quarter at 10,000+ US Resy-listed restaurants, select Resy event tickets, and Centurion New York dining: paying with the card at a qualifying restaurant suffices; a Resy booking is not required. Replaced the Saks credit effective 2026-07-01 after the Saks bankruptcy. Unused quarters are forfeited.</small></td>
 <td class="amt" data-h="Per year">$1,000</td>
 <td data-h="Paid out as">$250 a quarter; unused amounts are lost</td>
 <td data-h="Flags">—</td>
@@ -250,14 +249,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/chase-sapphire-reserve/">Chase Sapphire Reserve</a><small>$795 annual fee</small></td>
-<td data-h="Credit">DoorDash Monthly Promos<br><small style="color:var(--muted)">Requires active complimentary DashPass enrollment. $5 restaurant promo plus two $10 non-restaurant (grocery/retail) promos per month, each on a separate order — in-app checkout promos, not statement credits. Realizing the full $300 requires three distinct DoorDash orders every month.</small></td>
+<td data-h="Credit">DoorDash Monthly Promos<br><small style="color:var(--muted)">Requires active complimentary DashPass enrollment. $5 restaurant promo plus two $10 non-restaurant (grocery/retail) promos per month, each on a separate order: in-app checkout promos, not statement credits. Realizing the full $300 requires three distinct DoorDash orders every month.</small></td>
 <td class="amt" data-h="Per year">$300</td>
 <td data-h="Paid out as">$25 a month in 3 uses of $8.33; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span> <span class="chip">ends 2027-12-31</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-bonvoy-brilliant/">American Express Marriott Bonvoy Brilliant</a><small>$650 annual fee</small></td>
-<td data-h="Credit">Brilliant Dining Credit<br><small style="color:var(--muted)">Restaurants worldwide by merchant category — no specific merchant list. Excludes groceries, convenience stores, and gift cards; hotel restaurants may miscode as travel and miss the credit. Enrollment required; unused monthly credit is forfeited.</small></td>
+<td data-h="Credit">Brilliant Dining Credit<br><small style="color:var(--muted)">Restaurants worldwide by merchant category: no specific merchant list. Excludes groceries, convenience stores, and gift cards; hotel restaurants may miscode as travel and miss the credit. Enrollment required; unused monthly credit is forfeited.</small></td>
 <td class="amt" data-h="Per year">$300</td>
 <td data-h="Paid out as">$25 a month; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span></td>
@@ -271,14 +270,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/jp-morgan-reserve/">Chase J.P. Morgan Reserve</a><small>$795 annual fee</small></td>
-<td data-h="Credit">DoorDash Monthly Promos<br><small style="color:var(--muted)">Requires active complimentary DashPass enrollment. $5 restaurant promo plus two $10 non-restaurant (grocery/retail) promos per month, each on a separate order — in-app checkout promos, not statement credits. Realizing the full $300 requires three distinct DoorDash orders every month.</small></td>
+<td data-h="Credit">DoorDash Monthly Promos<br><small style="color:var(--muted)">Requires active complimentary DashPass enrollment. $5 restaurant promo plus two $10 non-restaurant (grocery/retail) promos per month, each on a separate order: in-app checkout promos, not statement credits. Realizing the full $300 requires three distinct DoorDash orders every month.</small></td>
 <td class="amt" data-h="Per year">$300</td>
 <td data-h="Paid out as">$25 a month in 3 uses of $8.33; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span> <span class="chip">ends 2027-12-31</span> <span class="chip muted">unverified</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/chase-sapphire-reserve-business/">Chase Sapphire Reserve for Business</a><small>$795 annual fee</small></td>
-<td data-h="Credit">DoorDash Monthly Promos<br><small style="color:var(--muted)">Requires DashPass activation by 2027-12-31: &quot;$5 monthly promo to spend on restaurant orders&quot; plus two $10 promos for other categories — in-app promos, three separate orders a month to realize.</small></td>
+<td data-h="Credit">DoorDash Monthly Promos<br><small style="color:var(--muted)">Requires DashPass activation by 2027-12-31: &quot;$5 monthly promo to spend on restaurant orders&quot; plus two $10 promos for other categories: in-app promos, three separate orders a month to realize.</small></td>
 <td class="amt" data-h="Per year">$300</td>
 <td data-h="Paid out as">$25 a month in 3 uses of $8.33; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span> <span class="chip">ends 2027-12-31</span></td>
@@ -394,7 +393,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section>
   <div class="wrap prose">
-    <div class="eyebrow">Other credit types</div>
+    <h2>Other credit types</h2>
     <ul class="related"><li><a href="/credits/portal-hotel/">Portal hotel credits</a> <small>26 credits</small></li><li><a href="/credits/trusted-traveler/">Global Entry, TSA PreCheck and CLEAR credits</a> <small>39 credits</small></li><li><a href="/credits/airline-fee/">Airline incidental fee credits</a> <small>8 credits</small></li><li><a href="/credits/companion/">Companion certificates and fares</a> <small>6 credits</small></li><li><a href="/credits/hotel/">Hotel credits and free-night awards</a> <small>15 credits</small></li><li><a href="/credits/anniversary/">Anniversary bonuses</a> <small>14 credits</small></li><li><a href="/credits/business/">Business software and services credits</a> <small>10 credits</small></li><li><a href="/credits/streaming/">Streaming and entertainment credits</a> <small>12 credits</small></li><li><a href="/credits/rideshare/">Rideshare and chauffeur credits</a> <small>23 credits</small></li><li><a href="/credits/airline/">Airline and flight credits</a> <small>16 credits</small></li><li><a href="/credits/travel/">General travel credits</a> <small>12 credits</small></li><li><a href="/credits/lifestyle/">Lifestyle, wellness and shopping credits</a> <small>21 credits</small></li></ul>
   </div>
 </section>

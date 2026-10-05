@@ -81,10 +81,10 @@ table.credits th.amt{text-align:right}
 .chip.rust{color:var(--rust);border-color:var(--rust);background:var(--rust-soft)}
 .chip.amber{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
 .chip.muted{color:var(--muted);border-style:dashed}
-.trap-card{border-left:3px solid var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.trap-card{border-top:3px double var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 .trap-card strong{color:var(--rust)}
 .trap-card small{display:block;color:var(--muted);margin-top:.5rem;font-size:.8rem}
-.note-card{border-left:3px solid var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.note-card{border-top:3px double var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 table.plain{border-collapse:collapse;width:100%;max-width:42rem;font-size:.92rem;margin-top:.6rem}
 table.plain td,table.plain th{text-align:left;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-soft)}
 table.plain th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
@@ -107,7 +107,7 @@ footer{border-top:3px double var(--rule-strong);padding:2.5rem 0 3rem}
 .foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
 .foot-grid a{color:var(--ink-soft)}
 .disclaimer{font-size:.75rem;color:var(--muted);max-width:44rem;margin-top:1.5rem;line-height:1.6}
-.answer{border-left:3px solid var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
+.answer{border-top:3px double var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
 .answer strong{color:var(--green)}
 .faq details{border-bottom:1px solid var(--rule);max-width:42rem}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.85rem 0;font-family:"Newsreader",Georgia,serif;font-size:1.12rem;font-weight:600;line-height:1.3}
@@ -209,20 +209,19 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section>
   <div class="wrap prose">
-    <div class="eyebrow">The credits</div>
     <h2>Every card with one, sorted by face value.</h2>
     <table class="credits">
 <thead><tr><th>Card</th><th>Credit</th><th class="amt">Per year</th><th>Paid out as</th><th>Flags</th></tr></thead>
 <tbody><tr>
 <td class="name"><a href="/cards/usbank-altitude-reserve/">U.S. Bank Altitude Reserve</a><small>$400 annual fee</small></td>
-<td data-h="Credit">$325 Travel Center Credit<br><small style="color:var(--muted)">MAJOR NERF effective 2025-12-15: previously auto-applied to any travel AND dining purchase; now only purchases made through the U.S. Bank Travel Center qualify. The portal is a commodity merchant-of-record OTA, so the hotel elite-status trap applies to redeeming this credit on hotel stays. Card itself is CLOSED to new applicants (since 2024-11-11) but existing holders keep and renew it — the audit question is keep vs product-change vs cancel.</small></td>
+<td data-h="Credit">$325 Travel Center Credit<br><small style="color:var(--muted)">MAJOR NERF effective 2025-12-15: previously auto-applied to any travel AND dining purchase; now only purchases made through the U.S. Bank Travel Center qualify. The portal is a commodity merchant-of-record OTA, so the hotel elite-status trap applies to redeeming this credit on hotel stays. Card itself is CLOSED to new applicants (since 2024-11-11) but existing holders keep and renew it; the audit question is keep vs product-change vs cancel.</small></td>
 <td class="amt" data-h="Per year">$325</td>
 <td data-h="Paid out as">$325 a year, resets on your card anniversary</td>
 <td data-h="Flags"><span class="chip amber">portal-only</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/chase-sapphire-reserve/">Chase Sapphire Reserve</a><small>$795 annual fee</small></td>
-<td data-h="Credit">$300 Annual Travel Credit<br><small style="color:var(--muted)">Applies automatically to any travel-coded charge (airlines, hotels, transit, tolls, parking). No portal requirement. Resets on the cardmember anniversary year, not the calendar year — a different clock than every other CSR credit.</small></td>
+<td data-h="Credit">$300 Annual Travel Credit<br><small style="color:var(--muted)">Applies automatically to any travel-coded charge (airlines, hotels, transit, tolls, parking). No portal requirement. Resets on the cardmember anniversary year, not the calendar year: a different clock than every other CSR credit.</small></td>
 <td class="amt" data-h="Per year">$300</td>
 <td data-h="Paid out as">$300 a year, resets on your card anniversary</td>
 <td data-h="Flags">—</td>
@@ -236,14 +235,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/capital-one-venture-x-business/">Capital One Venture X Business</a><small>$395 annual fee</small></td>
-<td data-h="Credit">Capital One Business Travel Credit<br><small style="color:var(--muted)">Portal-only, applied automatically at checkout on flights, hotels, and rental cars; splittable across bookings; unused balance expires on the next account anniversary. Same hotel status trap as the personal Venture X credit — burn it on flights or rental cars if the user holds hotel elite status.</small></td>
+<td data-h="Credit">Capital One Business Travel Credit<br><small style="color:var(--muted)">Portal-only, applied automatically at checkout on flights, hotels, and rental cars; splittable across bookings; unused balance expires on the next account anniversary. Same hotel status trap as the personal Venture X credit: burn it on flights or rental cars if the user holds hotel elite status.</small></td>
 <td class="amt" data-h="Per year">$300</td>
 <td data-h="Paid out as">$300 a year, resets on your card anniversary</td>
 <td data-h="Flags"><span class="chip amber">portal-only</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/jp-morgan-reserve/">Chase J.P. Morgan Reserve</a><small>$795 annual fee</small></td>
-<td data-h="Credit">$300 Annual Travel Credit<br><small style="color:var(--muted)">Applies automatically to any travel-coded charge (airlines, hotels, transit, tolls, parking). No portal requirement. Resets on the cardmember anniversary year, not the calendar year — a different clock than every other CSR credit.</small></td>
+<td data-h="Credit">$300 Annual Travel Credit<br><small style="color:var(--muted)">Applies automatically to any travel-coded charge (airlines, hotels, transit, tolls, parking). No portal requirement. Resets on the cardmember anniversary year, not the calendar year: a different clock than every other CSR credit.</small></td>
 <td class="amt" data-h="Per year">$300</td>
 <td data-h="Paid out as">$300 a year, resets on your card anniversary</td>
 <td data-h="Flags"><span class="chip muted">unverified</span></td>
@@ -271,21 +270,21 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/chase-united-club/">Chase United Club</a><small>$695 annual fee</small></td>
-<td data-h="Credit">Avis / Budget Car Rental Credit<br><small style="color:var(--muted)">$50 in United TravelBank cash for each of the first and second Avis or Budget bookings through cars.united.com. Paid in TravelBank cash — only worth face value if the user flies United. Card also allows enrollment in Avis President’s Club (not valued).</small></td>
+<td data-h="Credit">Avis / Budget Car Rental Credit<br><small style="color:var(--muted)">$50 in United TravelBank cash for each of the first and second Avis or Budget bookings through cars.united.com. Paid in TravelBank cash: only worth face value if the user flies United. Card also allows enrollment in Avis President’s Club (not valued).</small></td>
 <td class="amt" data-h="Per year">$100</td>
 <td data-h="Paid out as">$50 a year in 2 uses of $25, resets on your card anniversary</td>
 <td data-h="Flags">—</td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/chase-united-quest/">Chase United Quest</a><small>$350 annual fee</small></td>
-<td data-h="Credit">Avis / Budget Car Rental Credit<br><small style="color:var(--muted)">$40 in United TravelBank cash for each of the first and second Avis or Budget bookings through cars.united.com. Paid in TravelBank cash — only worth face value if the user flies United.</small></td>
+<td data-h="Credit">Avis / Budget Car Rental Credit<br><small style="color:var(--muted)">$40 in United TravelBank cash for each of the first and second Avis or Budget bookings through cars.united.com. Paid in TravelBank cash: only worth face value if the user flies United.</small></td>
 <td class="amt" data-h="Per year">$80</td>
 <td data-h="Paid out as">$40 a year in 2 uses of $20, resets on your card anniversary</td>
 <td data-h="Flags">—</td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/chase-united-explorer/">Chase United Explorer</a><small>$150 annual fee</small></td>
-<td data-h="Credit">Avis / Budget Car Rental Credit<br><small style="color:var(--muted)">$25 in United TravelBank cash for each of the first and second Avis or Budget rentals booked through cars.united.com and paid with the card. Paid in TravelBank cash — only worth face value if the user flies United.</small></td>
+<td data-h="Credit">Avis / Budget Car Rental Credit<br><small style="color:var(--muted)">$25 in United TravelBank cash for each of the first and second Avis or Budget rentals booked through cars.united.com and paid with the card. Paid in TravelBank cash: only worth face value if the user flies United.</small></td>
 <td class="amt" data-h="Per year">$50</td>
 <td data-h="Paid out as">$25 a year in 2 uses of $12.50, resets on your card anniversary</td>
 <td data-h="Flags">—</td>
@@ -303,7 +302,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section>
   <div class="wrap prose">
-    <div class="eyebrow">Other credit types</div>
+    <h2>Other credit types</h2>
     <ul class="related"><li><a href="/credits/portal-hotel/">Portal hotel credits</a> <small>26 credits</small></li><li><a href="/credits/trusted-traveler/">Global Entry, TSA PreCheck and CLEAR credits</a> <small>39 credits</small></li><li><a href="/credits/airline-fee/">Airline incidental fee credits</a> <small>8 credits</small></li><li><a href="/credits/companion/">Companion certificates and fares</a> <small>6 credits</small></li><li><a href="/credits/hotel/">Hotel credits and free-night awards</a> <small>15 credits</small></li><li><a href="/credits/anniversary/">Anniversary bonuses</a> <small>14 credits</small></li><li><a href="/credits/business/">Business software and services credits</a> <small>10 credits</small></li><li><a href="/credits/streaming/">Streaming and entertainment credits</a> <small>12 credits</small></li><li><a href="/credits/rideshare/">Rideshare and chauffeur credits</a> <small>23 credits</small></li><li><a href="/credits/dining/">Dining and delivery credits</a> <small>25 credits</small></li><li><a href="/credits/airline/">Airline and flight credits</a> <small>16 credits</small></li><li><a href="/credits/lifestyle/">Lifestyle, wellness and shopping credits</a> <small>21 credits</small></li></ul>
   </div>
 </section>

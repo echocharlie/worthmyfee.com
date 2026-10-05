@@ -81,10 +81,10 @@ table.credits th.amt{text-align:right}
 .chip.rust{color:var(--rust);border-color:var(--rust);background:var(--rust-soft)}
 .chip.amber{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
 .chip.muted{color:var(--muted);border-style:dashed}
-.trap-card{border-left:3px solid var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.trap-card{border-top:3px double var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 .trap-card strong{color:var(--rust)}
 .trap-card small{display:block;color:var(--muted);margin-top:.5rem;font-size:.8rem}
-.note-card{border-left:3px solid var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.note-card{border-top:3px double var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 table.plain{border-collapse:collapse;width:100%;max-width:42rem;font-size:.92rem;margin-top:.6rem}
 table.plain td,table.plain th{text-align:left;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-soft)}
 table.plain th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
@@ -107,7 +107,7 @@ footer{border-top:3px double var(--rule-strong);padding:2.5rem 0 3rem}
 .foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
 .foot-grid a{color:var(--ink-soft)}
 .disclaimer{font-size:.75rem;color:var(--muted);max-width:44rem;margin-top:1.5rem;line-height:1.6}
-.answer{border-left:3px solid var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
+.answer{border-top:3px double var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
 .answer strong{color:var(--green)}
 .faq details{border-bottom:1px solid var(--rule);max-width:42rem}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.85rem 0;font-family:"Newsreader",Georgia,serif;font-size:1.12rem;font-weight:600;line-height:1.3}
@@ -209,13 +209,12 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section>
   <div class="wrap prose">
-    <div class="eyebrow">The credits</div>
     <h2>Every card with one, sorted by face value.</h2>
     <table class="credits">
 <thead><tr><th>Card</th><th>Credit</th><th class="amt">Per year</th><th>Paid out as</th><th>Flags</th></tr></thead>
 <tbody><tr>
 <td class="name"><a href="/cards/amex-platinum/">American Express Platinum Card</a><small>$895 annual fee</small></td>
-<td data-h="Credit">Hotel Credit (FHR / The Hotel Collection)<br><small style="color:var(--muted)">Prepaid Amex Travel bookings only. FHR: no night minimum, and bookings are transmitted as direct/qualifying rates — points and elite recognition are generally earned at major chains, with FHR perks stacking on top.</small></td>
+<td data-h="Credit">Hotel Credit (FHR / The Hotel Collection)<br><small style="color:var(--muted)">Prepaid Amex Travel bookings only. FHR: no night minimum, and bookings are transmitted as direct/qualifying rates: points and elite recognition are generally earned at major chains, with FHR perks stacking on top.</small></td>
 <td class="amt" data-h="Per year">$600</td>
 <td data-h="Paid out as">$300 twice a year; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">portal, status honored</span> <span class="chip muted">unverified</span></td>
@@ -229,14 +228,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-platinum-schwab/">American Express Platinum Card for Schwab</a><small>$895 annual fee</small></td>
-<td data-h="Credit">Hotel Credit (FHR / The Hotel Collection)<br><small style="color:var(--muted)">Schwab Platinum: the same term as the Platinum Card per Amex’s Schwab terms page. Prepaid Amex Travel bookings only. FHR: no night minimum, and bookings are transmitted as direct/qualifying rates — points and elite recognition are generally earned at major chains, with FHR perks stacking on top.</small></td>
+<td data-h="Credit">Hotel Credit (FHR / The Hotel Collection)<br><small style="color:var(--muted)">Schwab Platinum: the same term as the Platinum Card per Amex’s Schwab terms page. Prepaid Amex Travel bookings only. FHR: no night minimum, and bookings are transmitted as direct/qualifying rates: points and elite recognition are generally earned at major chains, with FHR perks stacking on top.</small></td>
 <td class="amt" data-h="Per year">$600</td>
 <td data-h="Paid out as">$300 twice a year; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">portal, status honored</span> <span class="chip muted">unverified</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-platinum-morgan-stanley/">American Express Platinum Card for Morgan Stanley</a><small>$895 annual fee</small></td>
-<td data-h="Credit">Hotel Credit (FHR / The Hotel Collection)<br><small style="color:var(--muted)">Morgan Stanley Platinum: the same term as the Platinum Card per Amex’s Morgan Stanley terms page. FHR: no night minimum, and bookings are transmitted as direct/qualifying rates — points and elite recognition are generally earned at major chains, with FHR perks stacking on top.</small></td>
+<td data-h="Credit">Hotel Credit (FHR / The Hotel Collection)<br><small style="color:var(--muted)">Morgan Stanley Platinum: the same term as the Platinum Card per Amex’s Morgan Stanley terms page. FHR: no night minimum, and bookings are transmitted as direct/qualifying rates: points and elite recognition are generally earned at major chains, with FHR perks stacking on top.</small></td>
 <td class="amt" data-h="Per year">$600</td>
 <td data-h="Paid out as">$300 twice a year; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">portal, status honored</span> <span class="chip muted">unverified</span></td>
@@ -264,7 +263,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/robinhood-platinum-card/">Robinhood Platinum Card</a><small>$695 annual fee</small></td>
-<td data-h="Credit">Premium Hotel Credit<br><small style="color:var(--muted)">Portal booking: whether elite status and stay credit are honored is not stated — treated as a prepaid third-party rate.</small></td>
+<td data-h="Credit">Premium Hotel Credit<br><small style="color:var(--muted)">Portal booking: whether elite status and stay credit are honored is not stated: treated as a prepaid third-party rate.</small></td>
 <td class="amt" data-h="Per year">$500</td>
 <td data-h="Paid out as">$250 twice a year; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip rust">status trap</span></td>
@@ -278,21 +277,21 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/citi-strata-elite/">Citi Strata Elite</a><small>$595 annual fee</small></td>
-<td data-h="Credit">Citi Travel Hotel Credit<br><small style="color:var(--muted)">Prepaid 2+ consecutive-night stays booked through cititravel.com; applied as an instant discount at booking (can also offset taxes/fees). Keys off BOOKING date, not stay date — a December booking for a January stay draws from the current year. Remainder under $300 is splittable across later qualifying bookings in the same calendar year.</small></td>
+<td data-h="Credit">Citi Travel Hotel Credit<br><small style="color:var(--muted)">Prepaid 2+ consecutive-night stays booked through cititravel.com; applied as an instant discount at booking (can also offset taxes/fees). Keys off BOOKING date, not stay date: a December booking for a January stay draws from the current year. Remainder under $300 is splittable across later qualifying bookings in the same calendar year.</small></td>
 <td class="amt" data-h="Per year">$300</td>
 <td data-h="Paid out as">$300 a year, resets on the calendar</td>
 <td data-h="Flags"><span class="chip rust">status trap</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/citi-prestige/">Citi Prestige</a><small>$495 annual fee</small></td>
-<td data-h="Credit">4th Night Free (twice a year)<br><small style="color:var(--muted)">Fourth night refunded on a 4+ night stay booked through Citi Travel, up to two times per calendar year; valued at $150 a night. Portal booking is the merchant of record — hotel status is not honored.</small></td>
+<td data-h="Credit">4th Night Free (twice a year)<br><small style="color:var(--muted)">Fourth night refunded on a 4+ night stay booked through Citi Travel, up to two times per calendar year; valued at $150 a night. Portal booking is the merchant of record; hotel status is not honored.</small></td>
 <td class="amt" data-h="Per year">$300</td>
 <td data-h="Paid out as">$150 a year in 2 uses of $75, resets on the calendar</td>
 <td data-h="Flags"><span class="chip rust">status trap</span> <span class="chip muted">unverified</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/chase-sapphire-reserve/">Chase Sapphire Reserve</a><small>$795 annual fee</small></td>
-<td data-h="Credit">$250 Select Hotels Credit (2026)<br><small style="color:var(--muted)">One-time 2026 benefit (not confirmed to recur): prepaid 2+ night Chase Travel bookings at select brands — IHG, Montage, Pendry, Omni, Virgin Hotels, Minor, Pan Pacific. Chase states these bookings still earn hotel points and stay credit.</small></td>
+<td data-h="Credit">$250 Select Hotels Credit (2026)<br><small style="color:var(--muted)">One-time 2026 benefit (not confirmed to recur): prepaid 2+ night Chase Travel bookings at select brands: IHG, Montage, Pendry, Omni, Virgin Hotels, Minor, Pan Pacific. Chase states these bookings still earn hotel points and stay credit.</small></td>
 <td class="amt" data-h="Per year">$250</td>
 <td data-h="Paid out as">$250 a year, resets on the calendar</td>
 <td data-h="Flags"><span class="chip">portal, status honored</span> <span class="chip">ends 2026-12-31</span> <span class="chip muted">unverified</span></td>
@@ -306,7 +305,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/jp-morgan-reserve/">Chase J.P. Morgan Reserve</a><small>$795 annual fee</small></td>
-<td data-h="Credit">$250 Select Hotels Credit (2026)<br><small style="color:var(--muted)">One-time 2026 benefit (not confirmed to recur): prepaid 2+ night Chase Travel bookings at select brands — IHG, Montage, Pendry, Omni, Virgin Hotels, Minor, Pan Pacific. Chase states these bookings still earn hotel points and stay credit.</small></td>
+<td data-h="Credit">$250 Select Hotels Credit (2026)<br><small style="color:var(--muted)">One-time 2026 benefit (not confirmed to recur): prepaid 2+ night Chase Travel bookings at select brands: IHG, Montage, Pendry, Omni, Virgin Hotels, Minor, Pan Pacific. Chase states these bookings still earn hotel points and stay credit.</small></td>
 <td class="amt" data-h="Per year">$250</td>
 <td data-h="Paid out as">$250 a year, resets on the calendar</td>
 <td data-h="Flags"><span class="chip">portal, status honored</span> <span class="chip">ends 2026-12-31</span> <span class="chip muted">unverified</span></td>
@@ -401,7 +400,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section>
   <div class="wrap prose">
-    <div class="eyebrow">Other credit types</div>
+    <h2>Other credit types</h2>
     <ul class="related"><li><a href="/credits/trusted-traveler/">Global Entry, TSA PreCheck and CLEAR credits</a> <small>39 credits</small></li><li><a href="/credits/airline-fee/">Airline incidental fee credits</a> <small>8 credits</small></li><li><a href="/credits/companion/">Companion certificates and fares</a> <small>6 credits</small></li><li><a href="/credits/hotel/">Hotel credits and free-night awards</a> <small>15 credits</small></li><li><a href="/credits/anniversary/">Anniversary bonuses</a> <small>14 credits</small></li><li><a href="/credits/business/">Business software and services credits</a> <small>10 credits</small></li><li><a href="/credits/streaming/">Streaming and entertainment credits</a> <small>12 credits</small></li><li><a href="/credits/rideshare/">Rideshare and chauffeur credits</a> <small>23 credits</small></li><li><a href="/credits/dining/">Dining and delivery credits</a> <small>25 credits</small></li><li><a href="/credits/airline/">Airline and flight credits</a> <small>16 credits</small></li><li><a href="/credits/travel/">General travel credits</a> <small>12 credits</small></li><li><a href="/credits/lifestyle/">Lifestyle, wellness and shopping credits</a> <small>21 credits</small></li></ul>
   </div>
 </section>

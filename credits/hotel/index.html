@@ -81,10 +81,10 @@ table.credits th.amt{text-align:right}
 .chip.rust{color:var(--rust);border-color:var(--rust);background:var(--rust-soft)}
 .chip.amber{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
 .chip.muted{color:var(--muted);border-style:dashed}
-.trap-card{border-left:3px solid var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.trap-card{border-top:3px double var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 .trap-card strong{color:var(--rust)}
 .trap-card small{display:block;color:var(--muted);margin-top:.5rem;font-size:.8rem}
-.note-card{border-left:3px solid var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.note-card{border-top:3px double var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 table.plain{border-collapse:collapse;width:100%;max-width:42rem;font-size:.92rem;margin-top:.6rem}
 table.plain td,table.plain th{text-align:left;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-soft)}
 table.plain th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
@@ -107,7 +107,7 @@ footer{border-top:3px double var(--rule-strong);padding:2.5rem 0 3rem}
 .foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
 .foot-grid a{color:var(--ink-soft)}
 .disclaimer{font-size:.75rem;color:var(--muted);max-width:44rem;margin-top:1.5rem;line-height:1.6}
-.answer{border-left:3px solid var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
+.answer{border-top:3px double var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
 .answer strong{color:var(--green)}
 .faq details{border-bottom:1px solid var(--rule);max-width:42rem}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.85rem 0;font-family:"Newsreader",Georgia,serif;font-size:1.12rem;font-weight:600;line-height:1.3}
@@ -209,7 +209,6 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section>
   <div class="wrap prose">
-    <div class="eyebrow">The credits</div>
     <h2>Every card with one, sorted by face value.</h2>
     <table class="credits">
 <thead><tr><th>Card</th><th>Credit</th><th class="amt">Per year</th><th>Paid out as</th><th>Flags</th></tr></thead>
@@ -222,28 +221,28 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-hilton-aspire/">Hilton Honors American Express Aspire Card</a><small>$550 annual fee</small></td>
-<td data-h="Credit">Annual Free Night Reward<br><small style="color:var(--muted)">A free-night REWARD, not a statement credit: one standard-room award night, valid any night of the week at nearly any Hilton property with standard-room award availability (no points cap — usable at top-tier Waldorf/Conrad properties). Issued automatically each cardmember anniversary; the certificate expires 12 months after issuance — real forfeiture risk. Valued conservatively at $450 (Frequent Miler estimates ~$521; ceiling $1,000+ at trophy properties).</small></td>
+<td data-h="Credit">Annual Free Night Reward<br><small style="color:var(--muted)">A free-night REWARD, not a statement credit: one standard-room award night, valid any night of the week at nearly any Hilton property with standard-room award availability (no points cap: usable at top-tier Waldorf/Conrad properties). Issued automatically each cardmember anniversary; the certificate expires 12 months after issuance, real forfeiture risk. Valued conservatively at $450 (Frequent Miler estimates ~$521; ceiling $1,000+ at trophy properties).</small></td>
 <td class="amt" data-h="Per year">$450</td>
 <td data-h="Paid out as">$450 a year, resets on your card anniversary</td>
 <td data-h="Flags"><span class="chip muted">unverified</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-hilton-aspire/">Hilton Honors American Express Aspire Card</a><small>$550 annual fee</small></td>
-<td data-h="Credit">Semiannual Hilton Resort Credit<br><small style="color:var(--muted)">Up to $200 in statement credits each half of the calendar year (Jan–Jun, Jul–Dec) on purchases made directly with PARTICIPATING Hilton Resorts only — a curated list (many Waldorf Astoria, Conrad, and flagged resort properties), not every Hilton. Room rates charged by the resort qualify; third-party and non-participating properties do not. The unused half forfeits, so full $400 realization requires resort stays in both halves of the year.</small></td>
+<td data-h="Credit">Semiannual Hilton Resort Credit<br><small style="color:var(--muted)">Up to $200 in statement credits each half of the calendar year (Jan–Jun, Jul–Dec) on purchases made directly with PARTICIPATING Hilton Resorts only: a curated list (many Waldorf Astoria, Conrad, and flagged resort properties), not every Hilton. Room rates charged by the resort qualify; third-party and non-participating properties do not. The unused half forfeits, so full $400 realization requires resort stays in both halves of the year.</small></td>
 <td class="amt" data-h="Per year">$400</td>
 <td data-h="Paid out as">$200 twice a year; unused amounts are lost</td>
 <td data-h="Flags">—</td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-bonvoy-brilliant/">American Express Marriott Bonvoy Brilliant</a><small>$650 annual fee</small></td>
-<td data-h="Credit">Annual Free Night Award (85k cap)<br><small style="color:var(--muted)">A free-night AWARD, not a statement credit: up to 85,000 points/night, toppable with 25k of your own points. Valued conservatively at ~$300 (OMAAT ~$350; nominal ceiling ~$600). Deposited automatically after each anniversary; the certificate expires 12 months from issuance — a real forfeiture risk worth a calendar reminder.</small></td>
+<td data-h="Credit">Annual Free Night Award (85k cap)<br><small style="color:var(--muted)">A free-night AWARD, not a statement credit: up to 85,000 points/night, toppable with 25k of your own points. Valued conservatively at ~$300 (OMAAT ~$350; nominal ceiling ~$600). Deposited automatically after each anniversary; the certificate expires 12 months from issuance, a real forfeiture risk worth a calendar reminder.</small></td>
 <td class="amt" data-h="Per year">$300</td>
 <td data-h="Paid out as">$300 a year, resets on your card anniversary</td>
 <td data-h="Flags"><span class="chip muted">unverified</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/chase-ihg-premier-business/">Chase IHG One Rewards Premier Business</a><small>$99 annual fee</small></td>
-<td data-h="Credit">Anniversary Free Night Award (40k cap)<br><small style="color:var(--muted)">A free-night AWARD, not a statement credit: up to 40,000 points/night, toppable with your own points above the cap. Realizable value commonly $200–350; valued at $250. Issued after each account anniversary; the certificate expires in 12 months — calendar-reminder material.</small></td>
+<td data-h="Credit">Anniversary Free Night Award (40k cap)<br><small style="color:var(--muted)">A free-night AWARD, not a statement credit: up to 40,000 points/night, toppable with your own points above the cap. Realizable value commonly $200–350; valued at $250. Issued after each account anniversary; the certificate expires in 12 months, calendar-reminder material.</small></td>
 <td class="amt" data-h="Per year">$250</td>
 <td data-h="Paid out as">$250 a year, resets on your card anniversary</td>
 <td data-h="Flags"><span class="chip muted">unverified</span></td>
@@ -264,7 +263,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-business-platinum/">American Express Business Platinum</a><small>$895 annual fee</small></td>
-<td data-h="Credit">Hilton Credit<br><small style="color:var(--muted)">Direct charges at Hilton-portfolio properties — direct booking, so no portal conflict; a rare hotel credit that PRESERVES elite earning.</small></td>
+<td data-h="Credit">Hilton Credit<br><small style="color:var(--muted)">Direct charges at Hilton-portfolio properties: direct booking, so no portal conflict; a rare hotel credit that PRESERVES elite earning.</small></td>
 <td class="amt" data-h="Per year">$200</td>
 <td data-h="Paid out as">$50 a quarter; unused amounts are lost</td>
 <td data-h="Flags">—</td>
@@ -285,7 +284,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-hilton-surpass/">Hilton Honors American Express Surpass Card</a><small>$150 annual fee</small></td>
-<td data-h="Credit">Quarterly Hilton Credit<br><small style="color:var(--muted)">Up to $50 in statement credits each calendar quarter on purchases made directly with a property in the Hilton portfolio (room rates, in-hotel dining, incidentals charged by the hotel). No enrollment required. Third-party/OTA bookings do not qualify — the charge must come from the hotel. Unused quarters are forfeited, so full $200 realization requires a Hilton charge in all four quarters.</small></td>
+<td data-h="Credit">Quarterly Hilton Credit<br><small style="color:var(--muted)">Up to $50 in statement credits each calendar quarter on purchases made directly with a property in the Hilton portfolio (room rates, in-hotel dining, incidentals charged by the hotel). No enrollment required. Third-party/OTA bookings do not qualify: the charge must come from the hotel. Unused quarters are forfeited, so full $200 realization requires a Hilton charge in all four quarters.</small></td>
 <td class="amt" data-h="Per year">$200</td>
 <td data-h="Paid out as">$50 a quarter; unused amounts are lost</td>
 <td data-h="Flags">—</td>
@@ -324,7 +323,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section>
   <div class="wrap prose">
-    <div class="eyebrow">Other credit types</div>
+    <h2>Other credit types</h2>
     <ul class="related"><li><a href="/credits/portal-hotel/">Portal hotel credits</a> <small>26 credits</small></li><li><a href="/credits/trusted-traveler/">Global Entry, TSA PreCheck and CLEAR credits</a> <small>39 credits</small></li><li><a href="/credits/airline-fee/">Airline incidental fee credits</a> <small>8 credits</small></li><li><a href="/credits/companion/">Companion certificates and fares</a> <small>6 credits</small></li><li><a href="/credits/anniversary/">Anniversary bonuses</a> <small>14 credits</small></li><li><a href="/credits/business/">Business software and services credits</a> <small>10 credits</small></li><li><a href="/credits/streaming/">Streaming and entertainment credits</a> <small>12 credits</small></li><li><a href="/credits/rideshare/">Rideshare and chauffeur credits</a> <small>23 credits</small></li><li><a href="/credits/dining/">Dining and delivery credits</a> <small>25 credits</small></li><li><a href="/credits/airline/">Airline and flight credits</a> <small>16 credits</small></li><li><a href="/credits/travel/">General travel credits</a> <small>12 credits</small></li><li><a href="/credits/lifestyle/">Lifestyle, wellness and shopping credits</a> <small>21 credits</small></li></ul>
   </div>
 </section>

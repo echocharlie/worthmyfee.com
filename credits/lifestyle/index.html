@@ -81,10 +81,10 @@ table.credits th.amt{text-align:right}
 .chip.rust{color:var(--rust);border-color:var(--rust);background:var(--rust-soft)}
 .chip.amber{color:var(--amber);border-color:var(--amber);background:var(--amber-soft)}
 .chip.muted{color:var(--muted);border-style:dashed}
-.trap-card{border-left:3px solid var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.trap-card{border-top:3px double var(--rust);background:var(--rust-soft);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 .trap-card strong{color:var(--rust)}
 .trap-card small{display:block;color:var(--muted);margin-top:.5rem;font-size:.8rem}
-.note-card{border-left:3px solid var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
+.note-card{border-top:3px double var(--rule-strong);background:var(--paper-raised);padding:1.1rem 1.3rem;font-size:.95rem;max-width:42rem;margin:1rem 0}
 table.plain{border-collapse:collapse;width:100%;max-width:42rem;font-size:.92rem;margin-top:.6rem}
 table.plain td,table.plain th{text-align:left;padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-soft)}
 table.plain th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
@@ -107,7 +107,7 @@ footer{border-top:3px double var(--rule-strong);padding:2.5rem 0 3rem}
 .foot-grid{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
 .foot-grid a{color:var(--ink-soft)}
 .disclaimer{font-size:.75rem;color:var(--muted);max-width:44rem;margin-top:1.5rem;line-height:1.6}
-.answer{border-left:3px solid var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
+.answer{border-top:3px double var(--green);background:var(--paper-raised);padding:1.1rem 1.3rem;max-width:42rem;margin:0 0 1.6rem;font-size:1.05rem;line-height:1.6}
 .answer strong{color:var(--green)}
 .faq details{border-bottom:1px solid var(--rule);max-width:42rem}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.85rem 0;font-family:"Newsreader",Georgia,serif;font-size:1.12rem;font-weight:600;line-height:1.3}
@@ -209,7 +209,6 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section>
   <div class="wrap prose">
-    <div class="eyebrow">The credits</div>
     <h2>Every card with one, sorted by face value.</h2>
     <table class="credits">
 <thead><tr><th>Card</th><th>Credit</th><th class="amt">Per year</th><th>Paid out as</th><th>Flags</th></tr></thead>
@@ -271,21 +270,21 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-platinum/">American Express Platinum Card</a><small>$895 annual fee</small></td>
-<td data-h="Credit">Oura Ring Credit<br><small style="color:var(--muted)">Hardware at OuraRing.com only — excludes memberships, gift cards, accessories, and third-party retailers. Terms say per calendar year, but coverage describes it as one-time in practice (few people buy a ring yearly).</small></td>
+<td data-h="Credit">Oura Ring Credit<br><small style="color:var(--muted)">Hardware at OuraRing.com only: excludes memberships, gift cards, accessories, and third-party retailers. Terms say per calendar year, but coverage describes it as one-time in practice (few people buy a ring yearly).</small></td>
 <td class="amt" data-h="Per year">$200</td>
 <td data-h="Paid out as">$200 a year, resets on the calendar</td>
 <td data-h="Flags"><span class="chip muted">unverified</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/citi-strata-elite/">Citi Strata Elite</a><small>$595 annual fee</small></td>
-<td data-h="Credit">Splurge Credit<br><small style="color:var(--muted)">Must register at citi.com/splurgecredit and select up to 2 of the listed brands; selections apply from the day chosen, and whether they can be changed mid-year is not clearly documented. AA purchases exclude car rentals, hotels, status boosts, and Cargo; Live Nation/Ticketmaster must be purchased directly on their US sites. Merchant list is the launch list — Citi may rotate brands.</small></td>
+<td data-h="Credit">Splurge Credit<br><small style="color:var(--muted)">Must register at citi.com/splurgecredit and select up to 2 of the listed brands; selections apply from the day chosen, and whether they can be changed mid-year is not clearly documented. AA purchases exclude car rentals, hotels, status boosts, and Cargo; Live Nation/Ticketmaster must be purchased directly on their US sites. Merchant list is the launch list; Citi may rotate brands.</small></td>
 <td class="amt" data-h="Per year">$200</td>
 <td data-h="Paid out as">$200 a year, resets on the calendar</td>
 <td data-h="Flags"><span class="chip muted">unverified</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-platinum-schwab/">American Express Platinum Card for Schwab</a><small>$895 annual fee</small></td>
-<td data-h="Credit">Oura Ring Credit<br><small style="color:var(--muted)">Schwab Platinum: the same term as the Platinum Card per Amex’s Schwab terms page. Hardware at OuraRing.com only — excludes memberships, gift cards, accessories, and third-party retailers. Terms say per calendar year, but coverage describes it as one-time in practice (few people buy a ring yearly).</small></td>
+<td data-h="Credit">Oura Ring Credit<br><small style="color:var(--muted)">Schwab Platinum: the same term as the Platinum Card per Amex’s Schwab terms page. Hardware at OuraRing.com only: excludes memberships, gift cards, accessories, and third-party retailers. Terms say per calendar year, but coverage describes it as one-time in practice (few people buy a ring yearly).</small></td>
 <td class="amt" data-h="Per year">$200</td>
 <td data-h="Paid out as">$200 a year, resets on the calendar</td>
 <td data-h="Flags"><span class="chip muted">unverified</span></td>
@@ -306,21 +305,21 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-platinum/">American Express Platinum Card</a><small>$895 annual fee</small></td>
-<td data-h="Credit">Walmart+ Membership Credit<br><small style="color:var(--muted)">Covers the $12.95/month plan (plus taxes) only — the annual plan and Plus Up add-ons are excluded.</small></td>
+<td data-h="Credit">Walmart+ Membership Credit<br><small style="color:var(--muted)">Covers the $12.95/month plan (plus taxes) only; the annual plan and Plus Up add-ons are excluded.</small></td>
 <td class="amt" data-h="Per year">$155</td>
 <td data-h="Paid out as">$13 a month; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-business-gold/">American Express Business Gold</a><small>$375 annual fee</small></td>
-<td data-h="Credit">Walmart+ Membership Credit<br><small style="color:var(--muted)">Covers the $12.95/month plan (plus taxes) only — the annual plan and Plus Up add-ons are excluded. Same structure as the consumer Platinum version; requires the membership to auto-renew on the card.</small></td>
+<td data-h="Credit">Walmart+ Membership Credit<br><small style="color:var(--muted)">Covers the $12.95/month plan (plus taxes) only; the annual plan and Plus Up add-ons are excluded. Same structure as the consumer Platinum version; requires the membership to auto-renew on the card.</small></td>
 <td class="amt" data-h="Per year">$155</td>
 <td data-h="Paid out as">$13 a month; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-platinum-schwab/">American Express Platinum Card for Schwab</a><small>$895 annual fee</small></td>
-<td data-h="Credit">Walmart+ Membership Credit<br><small style="color:var(--muted)">Schwab Platinum: the same term as the Platinum Card per Amex’s Schwab terms page. Covers the $12.95/month plan (plus taxes) only — the annual plan and Plus Up add-ons are excluded.</small></td>
+<td data-h="Credit">Walmart+ Membership Credit<br><small style="color:var(--muted)">Schwab Platinum: the same term as the Platinum Card per Amex’s Schwab terms page. Covers the $12.95/month plan (plus taxes) only; the annual plan and Plus Up add-ons are excluded.</small></td>
 <td class="amt" data-h="Per year">$155</td>
 <td data-h="Paid out as">$13 a month; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span> <span class="chip muted">unverified</span></td>
@@ -334,7 +333,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/amex-business-platinum/">American Express Business Platinum</a><small>$895 annual fee</small></td>
-<td data-h="Credit">Wireless Credit<br><small style="color:var(--muted)">$10/month against direct US wireless-provider charges — among the most reachable credits on the card.</small></td>
+<td data-h="Credit">Wireless Credit<br><small style="color:var(--muted)">$10/month against direct US wireless-provider charges, among the most reachable credits on the card.</small></td>
 <td class="amt" data-h="Per year">$120</td>
 <td data-h="Paid out as">$10 a month; unused amounts are lost</td>
 <td data-h="Flags"><span class="chip">use it monthly</span></td>
@@ -348,14 +347,14 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 </tr>
 <tr>
 <td class="name"><a href="/cards/barclays-wyndham-earner-business/">Barclays Wyndham Rewards Earner Business Card</a><small>$149 annual fee</small></td>
-<td data-h="Credit">$65 Wholesale Club Membership Credit<br><small style="color:var(--muted)">&quot;Enjoy an annual $65 statement credit on eligible Wholesale Member clubs&quot; — the membership charge, not warehouse purchases.</small></td>
+<td data-h="Credit">$65 Wholesale Club Membership Credit<br><small style="color:var(--muted)">&quot;Enjoy an annual $65 statement credit on eligible Wholesale Member clubs&quot;: the membership charge, not warehouse purchases.</small></td>
 <td class="amt" data-h="Per year">$65</td>
 <td data-h="Paid out as">$65 a year, resets on your card anniversary</td>
 <td data-h="Flags"><span class="chip muted">unverified</span></td>
 </tr>
 <tr>
 <td class="name"><a href="/cards/robinhood-platinum-card/">Robinhood Platinum Card</a><small>$695 annual fee</small></td>
-<td data-h="Credit">Robinhood Gold Membership<br><small style="color:var(--muted)">Complimentary Robinhood Gold ($50/yr) for cardholders. Worth it only if you would pay for Gold — which a Gold Card holder upgrading already does.</small></td>
+<td data-h="Credit">Robinhood Gold Membership<br><small style="color:var(--muted)">Complimentary Robinhood Gold ($50/yr) for cardholders. Worth it only if you would pay for Gold, which a Gold Card holder upgrading already does.</small></td>
 <td class="amt" data-h="Per year">$50</td>
 <td data-h="Paid out as">$50 a year, resets on your card anniversary</td>
 <td data-h="Flags">—</td>
@@ -366,7 +365,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
 
 <section>
   <div class="wrap prose">
-    <div class="eyebrow">Other credit types</div>
+    <h2>Other credit types</h2>
     <ul class="related"><li><a href="/credits/portal-hotel/">Portal hotel credits</a> <small>26 credits</small></li><li><a href="/credits/trusted-traveler/">Global Entry, TSA PreCheck and CLEAR credits</a> <small>39 credits</small></li><li><a href="/credits/airline-fee/">Airline incidental fee credits</a> <small>8 credits</small></li><li><a href="/credits/companion/">Companion certificates and fares</a> <small>6 credits</small></li><li><a href="/credits/hotel/">Hotel credits and free-night awards</a> <small>15 credits</small></li><li><a href="/credits/anniversary/">Anniversary bonuses</a> <small>14 credits</small></li><li><a href="/credits/business/">Business software and services credits</a> <small>10 credits</small></li><li><a href="/credits/streaming/">Streaming and entertainment credits</a> <small>12 credits</small></li><li><a href="/credits/rideshare/">Rideshare and chauffeur credits</a> <small>23 credits</small></li><li><a href="/credits/dining/">Dining and delivery credits</a> <small>25 credits</small></li><li><a href="/credits/airline/">Airline and flight credits</a> <small>16 credits</small></li><li><a href="/credits/travel/">General travel credits</a> <small>12 credits</small></li></ul>
   </div>
 </section>
