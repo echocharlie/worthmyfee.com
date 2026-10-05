@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /logo-generator.html
 Disallow: /server/
 Disallow: /docs/
 
