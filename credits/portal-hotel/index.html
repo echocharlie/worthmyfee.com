@@ -137,6 +137,27 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
   disable_surveys: true,
   respect_dnt: true,
 })
+// Ad and post attribution: an ad's landing URL (or a link Eric posts) carries ?via=<channel>.
+// Copy it onto this page's links within worthmyfee.com and into the app, where the app's
+// first-party telemetry records it (fixed list in the app's src/shared/telemetry.ts).
+// Only listed values, nothing stored.
+;(function () {
+  try {
+    var via = new URLSearchParams(location.search).get('via');
+    if (!/^(google_ads|bing_ads|reddit_ads|reddit|hn|linkedin|facebook)$/.test(via || '')) return;
+    var tag = function () {
+      var links = document.querySelectorAll('a[href]');
+      for (var i = 0; i < links.length; i++) {
+        var u;
+        try { u = new URL(links[i].getAttribute('href'), location.href); } catch (e) { continue; }
+        if (!/(^|\.)worthmyfee\.com$/.test(u.hostname) || u.searchParams.has('via')) continue;
+        u.searchParams.set('via', via);
+        links[i].setAttribute('href', u.toString());
+      }
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tag); else tag();
+  } catch (e) {}
+})();
 </script>
 <script type="application/ld+json">
 {
@@ -165,7 +186,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
    "url": "https://worthmyfee.com/credits/portal-hotel/",
    "name": "Portal hotel credits: every card that has one — Worth My Fee",
    "description": "26 portal hotel credits across 23 annual-fee cards, $7,950 a year at face value.",
-   "dateModified": "2026-10-05",
+   "dateModified": "2026-10-08",
    "isPartOf": {
     "@id": "https://worthmyfee.com/#website"
    },
