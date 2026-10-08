@@ -47,6 +47,27 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
   disable_surveys: true,
   respect_dnt: true,
 })
+// Ad and post attribution: an ad's landing URL (or a link Eric posts) carries ?via=<channel>.
+// Copy it onto this page's links within worthmyfee.com and into the app, where the app's
+// first-party telemetry records it (fixed list in the app's src/shared/telemetry.ts).
+// Only listed values, nothing stored.
+;(function () {
+  try {
+    var via = new URLSearchParams(location.search).get('via');
+    if (!/^(google_ads|bing_ads|reddit_ads|reddit|hn|linkedin|facebook)$/.test(via || '')) return;
+    var tag = function () {
+      var links = document.querySelectorAll('a[href]');
+      for (var i = 0; i < links.length; i++) {
+        var u;
+        try { u = new URL(links[i].getAttribute('href'), location.href); } catch (e) { continue; }
+        if (!/(^|\.)worthmyfee\.com$/.test(u.hostname) || u.searchParams.has('via')) continue;
+        u.searchParams.set('via', via);
+        links[i].setAttribute('href', u.toString());
+      }
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tag); else tag();
+  } catch (e) {}
+})();
 </script>
 </head>
 <body>
@@ -80,7 +101,7 @@ posthog.init('phc_wx6Q7gUk2fT5TYMecVidhSYQJSNUhqmzP7y9TdGNcaKh', {
     <li>To communicate with you about your account or the Service.</li>
   </ul>
   <p>We do <strong>not</strong> sell or rent your personal information. We do not share your data with advertisers. We do not use your financial data for marketing.</p>
-  <p>We keep a small set of product events in our own server logs for 30 days: which screen a visit reached, whether a sign-in or bank connection succeeded or failed and the error code, whether an audit rendered and how many cards it covered, and whether checkout started. They are tied to a random identifier that exists only for that page load. An event record holds no account identifier, email, IP address, merchant, or amount, and the list of what it can hold is fixed in our code. This system is first-party only — no third-party analytics and no session recording — and browsers that send Do Not Track or Global Privacy Control are not sent even these events. Our public marketing pages at worthmyfee.com, before you sign in, separately use PostHog, a third-party analytics tool, to see which pages and links visitors reach. It is not present anywhere in the signed-in application at app.worthmyfee.com, so it never sees your account, a bank connection, or your financial data. It records page views and clicks only, never keystrokes or page content, respects Do Not Track and Global Privacy Control, and we keep its session recording turned off. These marketing pages are served from Google Cloud, whose standard request logs (IP address, user agent, page requested and time) are kept for 30 days and used only to see which search engines and AI crawlers read the site; the crawler records we send to PostHog contain no IP address.</p>
+  <p>We keep a small set of product events in our own server logs for 30 days: which screen a visit reached, whether a sign-in or bank connection succeeded or failed and the error code, whether an audit rendered and how many cards it covered, whether checkout started, and, when the link you followed was one of ours that says so, which ad or post brought you here (one name from a fixed list, such as google_ads or reddit). They are tied to a random identifier that exists only for that page load. An event record holds no account identifier, email, IP address, merchant, or amount, and the list of what it can hold is fixed in our code. This system is first-party only — no third-party analytics and no session recording — and browsers that send Do Not Track or Global Privacy Control are not sent even these events. Our public marketing pages at worthmyfee.com, before you sign in, separately use PostHog, a third-party analytics tool, to see which pages and links visitors reach. It is not present anywhere in the signed-in application at app.worthmyfee.com, so it never sees your account, a bank connection, or your financial data. It records page views and clicks only, never keystrokes or page content, respects Do Not Track and Global Privacy Control, and we keep its session recording turned off. These marketing pages are served from Google Cloud, whose standard request logs (IP address, user agent, page requested and time) are kept for 30 days and used only to see which search engines and AI crawlers read the site; the crawler records we send to PostHog contain no IP address.</p>
 
   <h2>3. Plaid</h2>
   <p>We use Plaid to connect to your financial institutions. By using the Service and connecting an account, you grant Worth My Fee and Plaid the right to access and transmit your financial account data as described in this policy and in Plaid's own policy. Plaid's collection and use of your information is governed by the <a href="https://plaid.com/legal/#end-user-privacy-policy" rel="noopener">Plaid End User Privacy Policy</a>. You can manage or revoke Plaid connections at any time from the Service's settings, or through the <a href="https://my.plaid.com" rel="noopener">Plaid Portal</a>.</p>
