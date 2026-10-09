@@ -79,6 +79,15 @@ the PostHog queries in CCBT `docs/search-console.md` work for both sites.
   Properties: `bot`, `family`, `path` (pathname only, ≤200 chars), `status`,
   `method`, `page_kind`, `render: 'server'`, and `ua_sample` (80 chars) for
   `bot = other` only. Rows from the old beacon say `render: 'js'`.
+- `family`: heybooker.app's `search`, `ai`, `social`, `seo`, `other`, plus two
+  of this site's own. `ads` = Google's ad-review agents
+  (`Google-AdWords-Express`, `Google-Ads-ULS-Service`, `AdsBot-Google`, the
+  bare `Google` UA), which fetch the landing page with a made-up
+  `?gclid=<integer>` the day a campaign goes live. `scanner` = probes (a
+  blank User-Agent → bot `none`, `Go-http-client`, `curl`, `python-requests`,
+  a WordPress installer URL as the UA, the misspelt `Mozlila`, the stub
+  `Mozilla/5.0 (compatible)`); in the first week they outnumbered people
+  about 30:1. `EXACT_UA` holds the whole-string matches; nothing is blocked.
 - `page_kind`: `home`, `cards_index`, `card`, `credit`, `methodology`,
   `about`, `legal` (privacy/terms), `sitemap`, `robots`, `indexnow_key`
   (`/<32 hex>.txt`), `other`.
@@ -165,6 +174,20 @@ Hits per bot over the last week:
 ```bash
 gcloud logging read 'resource.type="cloud_run_revision" AND resource.labels.service_name="worthmyfee-site" AND jsonPayload.message="crawler" AND timestamp>="'$(date -u -d '-7 days' +%Y-%m-%dT%H:%M:%SZ)'"' --project worthmyfee --limit 20000 --format=json | jq -r '.[].jsonPayload.crawler.bot' | sort | uniq -c | sort -rn
 ```
+
+Human page views per day — the request log minus every crawler family. The
+`Mozilla/5.0 (` requirement drops the blank, `curl`, Go and Python agents;
+the exclusions drop the rest of the named families. Scanner fleets using
+stale browser strings (Chrome/89, iPhone OS 13_2_3) still slip through, so
+look at the user-agent breakdown before quoting a number:
+
+```bash
+gcloud logging read 'resource.type="cloud_run_revision" AND resource.labels.service_name="worthmyfee-site" AND httpRequest.requestUrl:* AND httpRequest.userAgent:"Mozilla/5.0 (" AND NOT httpRequest.userAgent:("bot" OR "Bot" OR "crawler" OR "spider" OR "+http" OR "Google" OR "compatible)" OR "Mozlila" OR "wp-admin") AND timestamp>="'$(date -u -d '-7 days' +%Y-%m-%dT%H:%M:%SZ)'"' --project worthmyfee --limit 20000 --format='value(timestamp.date("%Y-%m-%d"),httpRequest.requestUrl)' | grep -vE '\.(png|ico|svg|css|js|webmanifest|txt|xml)(\?|$)' | cut -f1 | sort | uniq -c
+```
+
+A paid click: `httpRequest.requestUrl:"utm_medium=cpc"` (long `gclid`, UTM
+tags, google.com referer); the fake-gclid rows without UTM tags are the `ads`
+family checking the landing page.
 
 (macOS: `date -u -v-7d +%Y-%m-%dT%H:%M:%SZ`.) Errors: `jsonPayload.message="site-error"`.
 Boot line: `jsonPayload.message="site-listening"` (shows `gitSha` and whether
