@@ -22,7 +22,15 @@
  * argument, so the whole thing is unit-tested without a server.
  */
 
-/** @typedef {'search' | 'ai' | 'social' | 'seo' | 'other'} CrawlerFamily */
+/**
+ * `ads` and `scanner` are this site's additions to heybooker.app's families:
+ * Google's ad-review agents arrived with the first campaign (2026-10-08,
+ * 112 hits in a day, each with a fake `?gclid=<integer>`), and the scanner
+ * fleets probing a new host (blank User-Agent, Go-http-client, a WordPress
+ * installer URL as the UA) outnumbered people 30:1 in the first week. Both
+ * are excluded from the "human page views" queries by family.
+ * @typedef {'search' | 'ai' | 'social' | 'seo' | 'ads' | 'scanner' | 'other'} CrawlerFamily
+ */
 /** @typedef {{ bot: string, family: CrawlerFamily }} Crawler */
 
 // Substring match, case-insensitive, first hit wins — so a token that
@@ -30,6 +38,13 @@
 // "Applebot") must come before the shorter one.
 /** @type {ReadonlyArray<readonly [needle: string, bot: string, family: CrawlerFamily]>} */
 export const KNOWN_CRAWLERS = [
+  // Google Ads: landing-page review and quality checks. They fetch the final
+  // URL with a made-up `?gclid=<integer>` and no referer; a real click
+  // carries a long opaque gclid, UTM tags and a google.com referer.
+  ['google-adwords-express', 'google_ads', 'ads'],
+  ['google-ads-uls-service', 'google_ads', 'ads'],
+  ['adsbot-google', 'google_ads', 'ads'],
+  ['mediapartners-google', 'google_adsense', 'ads'],
   ['google-inspectiontool', 'google_inspection', 'search'],
   ['googlebot-image', 'google_image', 'search'],
   ['google-extended', 'google_extended', 'ai'],
@@ -74,7 +89,36 @@ export const KNOWN_CRAWLERS = [
   // hits on 283 pages in 7 minutes). Named so it can be charted, and capped,
   // on its own instead of sharing the `other` bucket with every unnamed bot.
   ['shapbot', 'shapbot', 'other'],
+  // Scanners: scripts probing a new host for software it does not run.
+  // Named by tool so the human count is clean; nothing is blocked on it.
+  ['wp-admin', 'wp_scanner', 'scanner'],          // its "UA" is the URL it probes
+  ['mozlila', 'typo_scanner', 'scanner'],         // sic — a known scanner signature
+  ['go-http-client', 'go_http', 'scanner'],
+  ['python-requests', 'python', 'scanner'],
+  ['python-urllib', 'python', 'scanner'],
+  ['libwww-perl', 'perl', 'scanner'],
+  ['curl/', 'curl', 'scanner'],                   // includes our own deploy check
+  ['wget/', 'wget', 'scanner'],
+  ['zgrab', 'zgrab', 'scanner'],
+  ['masscan', 'masscan', 'scanner'],
 ];
+
+/**
+ * Whole-string matches (lower-cased, trimmed) for agents whose string is too
+ * generic for a substring rule: bare "Google" would otherwise need the token
+ * `google`, which is in every Google crawler's UA. Checked before the table.
+ * @type {ReadonlyArray<readonly [ua: string, bot: string, family: CrawlerFamily]>}
+ */
+export const EXACT_UA = [
+  // Arrived alongside Google-AdWords-Express when the first campaign went
+  // live (51 hits on 2026-10-08): Google's, campaign-shaped, not a browser.
+  ['google', 'google_plain', 'ads'],
+  ['mozilla/5.0 (compatible)', 'compatible_only', 'scanner'],
+  ['mozilla/5.0 (windows nt 10.0; win64; x64) applewebkit/537.36', 'bare_webkit', 'scanner'],
+];
+
+/** A request with no User-Agent at all: scripts and probes; browsers always send one. */
+export const NO_UA = Object.freeze({ bot: 'none', family: 'scanner' });
 
 // Anything that announces itself as automated without being on the list.
 // `+http` is the convention for a crawler's info URL ("+http://…/bot.html").
@@ -82,8 +126,12 @@ const GENERIC_BOT_RE = /bot|crawler|spider|\+http/i;
 
 /** The crawler a User-Agent belongs to, or null for a browser / unknown client. */
 export function classifyCrawler(userAgent) {
-  if (typeof userAgent !== 'string' || !userAgent) return null;
+  if (typeof userAgent !== 'string' || !userAgent.trim()) return { ...NO_UA };
   const ua = userAgent.toLowerCase();
+  const trimmed = ua.trim();
+  for (const [exact, bot, family] of EXACT_UA) {
+    if (trimmed === exact) return { bot, family };
+  }
   for (const [needle, bot, family] of KNOWN_CRAWLERS) {
     if (ua.includes(needle)) return { bot, family };
   }

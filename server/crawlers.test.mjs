@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import express from 'express';
 import {
-  KNOWN_CRAWLERS, classifyCrawler, pageKind, isStaticAsset, shouldLogCrawlerPath, pathnameOf,
+  KNOWN_CRAWLERS, EXACT_UA, NO_UA, classifyCrawler, pageKind, isStaticAsset, shouldLogCrawlerPath, pathnameOf,
   makeHourlyCap, crawlerLogger, makeCapture, logLine, posthogBody, CRAWLER_HOURLY_CAP, UA_SAMPLE_MAX, PATH_MAX,
 } from './crawlers.mjs';
 
@@ -48,6 +48,17 @@ const NAMED = [
   ['AwarioBot/1.0', 'awario', 'seo'],
   ['ProspectDB/1.0 (+https://resellers.yasin.nu/bot)', 'prospectdb', 'seo'],
   ['ShapBot/0.1.0', 'shapbot', 'other'],
+  // Google Ads review agents, as seen on 2026-10-08 when the first campaign went live.
+  ['Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; Mozilla/5.0, Google-AdWords-Express) Chrome/153.0.0.0 Safari/537.36', 'google_ads', 'ads'],
+  ['Google-Ads-ULS-Service', 'google_ads', 'ads'],
+  ['AdsBot-Google (+http://www.google.com/adsbot.html)', 'google_ads', 'ads'],
+  ['Mediapartners-Google', 'google_adsense', 'ads'],
+  // Scanners, as seen in the first week on Cloud Run.
+  ['http://worthmyfee.com/wp-admin/install.php?step=1', 'wp_scanner', 'scanner'],
+  ['Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36', 'typo_scanner', 'scanner'],
+  ['Go-http-client/1.1', 'go_http', 'scanner'],
+  ['python-requests/2.32.3', 'python', 'scanner'],
+  ['curl/8.5.0', 'curl', 'scanner'],
 ];
 
 const BROWSERS = [
@@ -91,9 +102,25 @@ describe('classifyCrawler', () => {
   for (const ua of BROWSERS) {
     it(`ordinary browser is null: ${ua}`, () => assert.equal(classifyCrawler(ua), null));
   }
-  it('returns null for a missing or empty User-Agent', () => {
-    assert.equal(classifyCrawler(undefined), null);
-    assert.equal(classifyCrawler(''), null);
+  it('a missing or empty User-Agent is a scanner (browsers always send one)', () => {
+    assert.deepEqual(classifyCrawler(undefined), { bot: 'none', family: 'scanner' });
+    assert.deepEqual(classifyCrawler(''), { bot: 'none', family: 'scanner' });
+    assert.deepEqual(classifyCrawler('   '), { bot: 'none', family: 'scanner' });
+    assert.deepEqual(NO_UA, { bot: 'none', family: 'scanner' });
+  });
+  it('whole-string matches: bare "Google" and the stub browser strings', () => {
+    assert.deepEqual(classifyCrawler('Google'), { bot: 'google_plain', family: 'ads' });
+    assert.deepEqual(classifyCrawler(' google '), { bot: 'google_plain', family: 'ads' });
+    assert.deepEqual(classifyCrawler('Mozilla/5.0 (compatible)'), { bot: 'compatible_only', family: 'scanner' });
+    assert.deepEqual(classifyCrawler('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'), { bot: 'bare_webkit', family: 'scanner' });
+    // Not whole-string: a real Chrome continues past the stub, and "Google" inside a longer UA is not the bare agent.
+    assert.equal(classifyCrawler('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'), null);
+    assert.equal(classifyCrawler('Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)'), null);
+    for (const [exact] of EXACT_UA) assert.equal(exact, exact.toLowerCase().trim(), `EXACT_UA entries are lower-cased and trimmed: ${exact}`);
+  });
+  it('the Ads agents and scanners never reach the generic other bucket, and carry no ua_sample', () => {
+    assert.equal(classifyCrawler('AdsBot-Google (+http://www.google.com/adsbot.html)')?.bot, 'google_ads');
+    assert.equal(classifyCrawler('Go-http-client/2.0')?.family, 'scanner');
   });
   it('the table orders every token before any shorter token it contains', () => {
     KNOWN_CRAWLERS.forEach(([needle], i) => {
@@ -254,12 +281,11 @@ describe('crawlerLogger', () => {
     assert.equal(events[0].properties.method, 'HEAD');
     assert.equal(events[0].properties.page_kind, 'sitemap');
   });
-  it('ignores POST, browsers, missing UA, the health check and static assets — and always calls next once', () => {
+  it('ignores POST, browsers, the health check and static assets — and always calls next once', () => {
     const { events, run } = harness();
     for (const [url, ua, method] of [
       ['/cards/amex-platinum/', GOOGLEBOT, 'POST'],
       ['/cards/amex-platinum/', CHROME, 'GET'],
-      ['/cards/amex-platinum/', undefined, 'GET'],
       ['/healthz', GOOGLEBOT, 'GET'],
       ['/og-image.png', GOOGLEBOT, 'GET'],
       ['/favicon.ico', GOOGLEBOT, 'GET'],
@@ -269,6 +295,17 @@ describe('crawlerLogger', () => {
       res.finish();
     }
     assert.deepEqual(events, []);
+  });
+  it('a request with no User-Agent is one scanner hit (bot none), with no ua_sample', () => {
+    const { events, run } = harness();
+    const { res, nexts } = run('/cards/amex-platinum/', undefined, { method: 'GET' });
+    assert.equal(nexts, 1);
+    res.finish();
+    assert.equal(events.length, 1);
+    assert.equal(events[0].distinctId, 'crawler:none');
+    assert.equal(events[0].properties.bot, 'none');
+    assert.equal(events[0].properties.family, 'scanner');
+    assert.equal(events[0].properties.ua_sample, undefined);
   });
   it('never stores the IP, the query string or a known bot\'s UA', () => {
     const { events, run } = harness();
